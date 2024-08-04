@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import LogoutButton from "../auth/LogoutButton";
 import {useSelector} from "react-redux";
@@ -6,8 +6,13 @@ import {useSelector} from "react-redux";
 const Sidebar = () => {
 
     const livret = useSelector(state => state.livret.livret)
-    const id = livret.id;
-    const slug = livret.slug;
+    const [id   , setId   ] = useState("")
+    const [slug , setSlug ] = useState("")
+
+    useEffect(() => {
+        setId(livret.id);
+        setSlug(livret.slug);
+    }, []);
 
     return (
         <div className="d-flex flex-column p-3 text-white bg-dark sidebar h-100">
