@@ -44,6 +44,7 @@ const Stats = () => {
                                 <StatsCard data={statsDatas.viewsThisMonth} bgColor={'warning'} title={'Vus du mois'}/>
                             </div>
                             <hr/>
+                            <StatsBetweenDatesForm/>
                         </div>
                     </div>
 
