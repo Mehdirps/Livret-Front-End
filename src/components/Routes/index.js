@@ -9,6 +9,7 @@ import FirstLogin from "../../pages/FirstLogin";
 import Profile from "../../pages/dashboard/Profile";
 import Livret from "../../pages/Livret";
 import Background from "../../pages/dashboard/Background";
+import Stats from "../../pages/dashboard/Stats";
 
 const Index = () => {
     return (
@@ -24,6 +25,7 @@ const Index = () => {
                     <Route index element={<DashboardIndex/>}/>
                     <Route path={'profil'} element={<Profile/>}/>
                     <Route path={'background'} element={<Background/>}/>
+                    <Route path={'stats'} element={<Stats/>}/>
                 </Route>
             </Routes>
         </BrowserRouter>
