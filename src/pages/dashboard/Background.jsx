@@ -4,6 +4,7 @@ import {setLivret} from "../../stores/slices/livretSlice";
 
 const Background = () => {
     const livret = useSelector(state => state.livret.livret);
+    const token = useSelector(state => state.user.token);
     const [backgroundGroups, setBackgroundGroups] = useState([])
     const [selectedGroupId, setSelectedGroupId] = useState(1);
     const [success, setSuccess] = useState(null);
@@ -15,7 +16,7 @@ const Background = () => {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + localStorage.getItem('token')
+                    'Authorization': 'Bearer ' + token
                 }
             })
                 .then(response => response.json())
