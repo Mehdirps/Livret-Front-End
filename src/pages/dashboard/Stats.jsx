@@ -3,6 +3,7 @@ import {useSelector} from "react-redux";
 import Loading from "../../components/Loading";
 import StatsCard from "../../components/dashboard/StatsCard";
 import StatsBetweenDatesForm from "../../components/dashboard/StatsBetweenDatesForm";
+import ExportStats from "../../components/dashboard/ExportStats";
 
 const Stats = () => {
     const token = useSelector(state => state.user.token);
@@ -34,7 +35,7 @@ const Stats = () => {
                             <h2 className="mb-4">Statistiques des vues de livret</h2>
                             <hr/>
                             <p>Exporter en PDF les statistiques de vues de votre livret</p>
-                            <button id="exportPdf" className="btn btn-primary">Exporter en PDF</button>
+                            <ExportStats data={statsDatas}/>
                             <hr/>
                             <div className="row">
                                 <StatsCard data={statsDatas.totalViews} bgColor={'primary'} title={'Total des vues'}/>
