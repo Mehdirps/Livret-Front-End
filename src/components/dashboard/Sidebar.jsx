@@ -35,7 +35,7 @@ const Sidebar = () => {
                         <li><Link className="dropdown-item" to="/dashboard/edit_livret">Editer</Link></li>
                         <li><Link className="dropdown-item" to="/dashboard/background">Changer le fond</Link></li>
                         <li><hr className="dropdown-divider" /></li>
-                        <li><Link className="dropdown-item" to={`/livret/${slug}/${id}`}>Voir</Link></li>
+                        <li><Link className="dropdown-item" to={`/livret/${slug}/${id}`} target="_blank">Voir</Link></li>
                     </ul>
                 </li>
                 <li>
