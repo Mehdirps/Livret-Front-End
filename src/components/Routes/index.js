@@ -10,6 +10,7 @@ import Profile from "../../pages/dashboard/Profile";
 import Livret from "../../pages/Livret";
 import Background from "../../pages/dashboard/Background";
 import Stats from "../../pages/dashboard/Stats";
+import Suggest from "../../pages/dashboard/Suggest";
 
 const Index = () => {
     return (
@@ -26,6 +27,7 @@ const Index = () => {
                     <Route path={'profil'} element={<Profile/>}/>
                     <Route path={'background'} element={<Background/>}/>
                     <Route path={'stats'} element={<Stats/>}/>
+                    <Route path={'suggestions'} element={<Suggest/>}/>
                 </Route>
             </Routes>
         </BrowserRouter>
