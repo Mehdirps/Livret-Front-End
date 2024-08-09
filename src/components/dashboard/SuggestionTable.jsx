@@ -5,7 +5,6 @@ const SuggestionTable = ({suggestions,setRequestSuccess}) => {
 
     const token = useSelector(state => state.user.token);
     const handleStatusChange = (e) => {
-
         const id = e.target.getAttribute('data-id');
 
         fetch(process.env.REACT_APP_API_URL + 'dashboard/suggestion/status', {
