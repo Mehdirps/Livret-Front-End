@@ -42,6 +42,7 @@ const Suggest = () => {
     return (
         <div className="container">
             <h2 className="mb-4">Mes suggestions</h2>
+            <p>Retrouver ici, les suggestions faites par vos visiteurs pour améliorer votre livret.</p>
             <hr />
             <SuggestionStatusToggle livret={livret} />
             <hr />

@@ -33,9 +33,10 @@ const Stats = () => {
                     <div>
                         <div className="container">
                             <h2 className="mb-4">Statistiques des vues de livret</h2>
+                            <p>Retrouvez ici les statistiques des vues de votre livret</p>
                             <hr/>
-                            <p>Exporter en PDF les statistiques de vues de votre livret</p>
                             <ExportStats data={statsDatas}/>
+                            <p>Exporter en PDF les statistiques de vues de votre livret</p>
                             <hr/>
                             <div className="row">
                                 <StatsCard data={statsDatas.totalViews} bgColor={'primary'} title={'Total des vues'}/>
