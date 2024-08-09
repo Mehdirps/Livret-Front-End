@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from "react-redux";
-import SuggestionFilter from "../../components/dashboard/SuggestionFilter";
-import SuggestionStatusToggle from "../../components/dashboard/SuggestionStatusToggle";
-import ExportPdfButton from "../../components/dashboard/ExportPdfButton";
-import SuggestionTable from "../../components/dashboard/SuggestionTable";
-import SuggestionStats from "../../components/dashboard/SuggestionStats";
+import SuggestionFilter from "../../components/dashboard/suggestions/SuggestionFilter";
+import SuggestionStatusToggle from "../../components/dashboard/suggestions/SuggestionStatusToggle";
+import ExportPdfButton from "../../components/dashboard/suggestions/ExportPdfButton";
+import SuggestionTable from "../../components/dashboard/suggestions/SuggestionTable";
+import SuggestionStats from "../../components/dashboard/suggestions/SuggestionStats";
 
 
 const Suggest = () => {

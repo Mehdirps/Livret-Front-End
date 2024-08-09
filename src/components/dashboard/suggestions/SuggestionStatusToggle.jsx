@@ -1,6 +1,6 @@
 import React from "react";
 import {useSelector, useDispatch} from "react-redux";
-import {setLivret} from "../../stores/slices/livretSlice";
+import {setLivret} from "../../../stores/slices/livretSlice";
 
 const SuggestionStatusToggle = ({livret}) => {
 
