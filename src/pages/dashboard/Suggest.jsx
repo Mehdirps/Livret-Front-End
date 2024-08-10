@@ -5,6 +5,7 @@ import SuggestionStatusToggle from "../../components/dashboard/suggestions/Sugge
 import ExportPdfButton from "../../components/dashboard/suggestions/ExportPdfButton";
 import SuggestionTable from "../../components/dashboard/suggestions/SuggestionTable";
 import SuggestionStats from "../../components/dashboard/suggestions/SuggestionStats";
+import SuggestionsSearch from "../../components/dashboard/suggestions/SuggestionsSearch";
 
 
 const Suggest = () => {
@@ -44,6 +45,8 @@ const Suggest = () => {
             <h2 className="mb-4">Mes suggestions</h2>
             <p>Retrouver ici, les suggestions faites par vos visiteurs pour améliorer votre livret.</p>
             <hr />
+            <SuggestionsSearch setSuggestions={setSuggestions}/>
+            <hr/>
             <SuggestionStatusToggle livret={livret} />
             <hr />
             <ExportPdfButton suggestions={suggestions} />
