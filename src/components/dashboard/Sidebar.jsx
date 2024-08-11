@@ -1,13 +1,14 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import LogoutButton from "../auth/LogoutButton";
-import {useSelector} from "react-redux";
+import { useSelector } from "react-redux";
+import ShareLivret from './ShareLivret';
 
 const Sidebar = () => {
 
     const livret = useSelector(state => state.livret.livret)
-    const [id   , setId   ] = useState("")
-    const [slug , setSlug ] = useState("")
+    const [id, setId] = useState("")
+    const [slug, setSlug] = useState("")
 
     useEffect(() => {
         setId(livret.id);
@@ -28,7 +29,7 @@ const Sidebar = () => {
                 </li>
                 <li className="nav-item w-100 dropdown">
                     <a className="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false">
+                        data-bs-toggle="dropdown" aria-expanded="false">
                         <i className="bi bi-book"></i> Mon livret d'accueil
                     </a>
                     <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -64,7 +65,7 @@ const Sidebar = () => {
                     </NavLink>
                 </li>
                 <li>
-                    <LogoutButton/>
+                    <LogoutButton />
                 </li>
             </ul>
             <hr />
@@ -74,6 +75,7 @@ const Sidebar = () => {
             <button type="button" className="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#shareModal">
                 Partager
             </button>
+            <ShareLivret />
         </div>
     );
 };
