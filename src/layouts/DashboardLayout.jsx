@@ -3,12 +3,17 @@ import { Outlet, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { clearUser } from '../stores/slices/userSlice';
 import Sidebar from '../components/dashboard/Sidebar';
+import Error from '../components/Error';
+import Success from '../components/Success';
 
 const DashboardLayout = () => {
     const user = useSelector(state => state.user.user);
     const token = useSelector(state => state.user.token);
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
+    const error = useSelector(state => state.livret.error);
+    const success = useSelector(state => state.livret.success);
 
     const active_path = window.location.pathname;
 
@@ -35,12 +40,22 @@ const DashboardLayout = () => {
     }, [active_path, user, token, dispatch, navigate]);
 
     return (
-        <div className="row" style={{minHeight: '100vh', maxWidth:'100vw'}}>
+        <div className="row" style={{ minHeight: '100vh', maxWidth: '100vw' }}>
             <div className="col-md-3 col-12">
                 <Sidebar />
             </div>
             <div className="col-md-9 col-10">
                 <main>
+                    {
+                        error && (
+                            <Error error={error} />
+                        )
+                    }
+                    {
+                        success && (
+                            <Success success={success} />
+                        )
+                    }
                     <Outlet />
                 </main>
             </div>
