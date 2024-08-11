@@ -2,8 +2,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    livret : JSON.parse(localStorage.getItem('livret')) || null,
-    modules : JSON.parse(localStorage.getItem('modules')) || null,
+    livret: JSON.parse(localStorage.getItem('livret')) || null,
+    modules: JSON.parse(localStorage.getItem('modules')) || null,
+    success: null,
+    error: null,
 };
 
 const livretSlice = createSlice({
@@ -18,8 +20,14 @@ const livretSlice = createSlice({
             state.modules = action.payload.modules;
             localStorage.setItem('modules', JSON.stringify(action.payload.modules));
         },
+        setSuccess: (state, action) => {
+            state.success = action.payload.success;
+        },
+        setError: (state, action) => {
+            state.error = action.payload.error;
+        },
     },
 });
 
-export const { setLivret, setModules} = livretSlice.actions;
+export const { setLivret, setModules, setError, setSuccess } = livretSlice.actions;
 export default livretSlice.reducer;
