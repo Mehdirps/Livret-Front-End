@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {useDispatch} from "react-redux";
 import {clearUser, setUser} from "../../stores/slices/userSlice";
 import {useNavigate} from "react-router-dom";
+import Error from "../Error";
 
 const LoginForm = ({setOpenLogin}) => {
 
@@ -59,9 +60,8 @@ const LoginForm = ({setOpenLogin}) => {
             <h2 className="text-center">Connexion</h2>
             {
                 error ?
-                    <div className="alert alert-danger" role="alert">
-                        {error}
-                    </div> :
+                    <Error error={error}/>    
+                :
                     null
             }
             <form className="col-6 mx-auto" onSubmit={(e) => {

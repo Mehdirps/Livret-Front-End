@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {useSelector, useDispatch} from "react-redux";
 import PasswordProfileForm from "./PasswordProfileForm";
 import {setUserAfterUpdate} from "../../stores/slices/userSlice";
+import {setSuccess, setError} from "../../stores/slices/livretSlice";
 
 const UserProfileForm = () => {
     const user = useSelector(state => state.user.user);
@@ -17,14 +18,8 @@ const UserProfileForm = () => {
 
     const dispatch = useDispatch();
 
-    const [error, setError] = useState("");
-    const [success, setSuccess] = useState("");
-
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        setError("");
-        setSuccess("");
 
         const formData = new FormData();
 
@@ -48,13 +43,13 @@ const UserProfileForm = () => {
         }).then(response => response.json())
             .then(data => {
                 if (data.error) {
-                    setError(data.error);
+                    dispatch(setError({error: data.error}));
                 } else {
-                    setSuccess(data.message);
+                    dispatch(setSuccess({success: data.message}));
                     dispatch(setUserAfterUpdate({user: data.user}));
                 }
             })
-            .catch(error => console.error(error));
+            .catch(error => dispatch(setError({error: error})));
     };
 
 
@@ -63,8 +58,6 @@ const UserProfileForm = () => {
         <div className="col-12">
             <form onSubmit={(e) => handleSubmit(e)} className="p-5 bg-light rounded"
                   encType="multipart/form-data">
-                {error && <div className="alert alert-danger">{error}</div>}
-                {success && <div className="alert alert-success">{success}</div>}
                 <h3><i className="bi bi-info-circle"></i> Vos informations</h3>
                 <div className="row">
                     <div className="form-group col-md-4">

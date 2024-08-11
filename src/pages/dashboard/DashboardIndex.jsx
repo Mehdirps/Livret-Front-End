@@ -3,6 +3,7 @@ import {useSelector, useDispatch} from "react-redux";
 import {setLivret} from "../../stores/slices/livretSlice";
 import Loading from "../../components/Loading";
 import FAQ from "../../components/dashboard/FAQ";
+import { setError } from '../../stores/slices/livretSlice';
 
 const DashboardIndex = () => {
 
@@ -22,7 +23,7 @@ const DashboardIndex = () => {
                 dispatch(setLivret({livret: data.livret}));
             })
             .catch((error) => {
-                console.error('Error:', error);
+                dispatch(setError({ error: error }));
             });
     }, []);
 

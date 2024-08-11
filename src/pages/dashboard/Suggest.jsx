@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import SuggestionFilter from "../../components/dashboard/suggestions/SuggestionFilter";
 import SuggestionStatusToggle from "../../components/dashboard/suggestions/SuggestionStatusToggle";
 import ExportPdfButton from "../../components/dashboard/suggestions/ExportPdfButton";
 import SuggestionTable from "../../components/dashboard/suggestions/SuggestionTable";
 import SuggestionStats from "../../components/dashboard/suggestions/SuggestionStats";
 import SuggestionsSearch from "../../components/dashboard/suggestions/SuggestionsSearch";
+import { setError } from '../../stores/slices/livretSlice';
 
 
 const Suggest = () => {
@@ -16,7 +17,9 @@ const Suggest = () => {
     const [suggestionsToFiltered, setSuggestionsToFiltered] = useState([]);
 
     const [suggestionStats, setSuggestionStats] = useState({ accepted: 0, refused: 0, pending: 0 });
-    const [requestSuccess, setRequestSuccess] = useState(false)
+    const [requestSuccess, setRequestSuccess] = useState(false);
+
+    const dispatch = useDispatch();
 
     useEffect(() => {
         fetch(process.env.REACT_APP_API_URL + 'dashboard/suggestions', {
@@ -37,7 +40,7 @@ const Suggest = () => {
                 });
                 setRequestSuccess(false);
             })
-            .catch(error => console.error(error));
+            .catch(error => dispatch(setError({ error: error })));
     }, [token,requestSuccess]);
 
     return (

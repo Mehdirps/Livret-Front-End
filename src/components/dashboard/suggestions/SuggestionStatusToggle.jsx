@@ -1,6 +1,7 @@
 import React from "react";
 import {useSelector, useDispatch} from "react-redux";
 import {setLivret} from "../../../stores/slices/livretSlice";
+import { setError, setSuccess } from "../../../stores/slices/livretSlice";
 
 const SuggestionStatusToggle = ({livret}) => {
 
@@ -18,8 +19,9 @@ const SuggestionStatusToggle = ({livret}) => {
             .then(response => response.json())
             .then(data => {
                 dispatch(setLivret({livret: data.livret}));
+                dispatch(setSuccess({success: data.message}));
             })
-            .catch(error => console.error(error));
+            .catch(error => dispatch(setError({error: error})));
     }
 
     return (

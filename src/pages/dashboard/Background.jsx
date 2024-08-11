@@ -1,41 +1,40 @@
-import React, {useState, useEffect} from 'react';
-import {useSelector, useDispatch} from "react-redux";
-import {setLivret} from "../../stores/slices/livretSlice";
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from "react-redux";
+import { setLivret, setSuccess } from "../../stores/slices/livretSlice";
 
 const Background = () => {
     const livret = useSelector(state => state.livret.livret);
     const token = useSelector(state => state.user.token);
     const [backgroundGroups, setBackgroundGroups] = useState([])
     const [selectedGroupId, setSelectedGroupId] = useState(1);
-    const [success, setSuccess] = useState(null);
 
     const dispatch = useDispatch();
 
     useEffect(() => {
-            fetch(process.env.REACT_APP_API_URL + 'dashboard/background', {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + token
-                }
-            })
-                .then(response => response.json())
-                .then(data => {
-                    const groups = data.background_groups.map(group => {
-                        const backgrounds = data.backgrounds.filter(background => background.backgrounds_group_id === group.id);
-                        return {
-                            ...group,
-                            backgrounds
-                        }
+        fetch(process.env.REACT_APP_API_URL + 'dashboard/background', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                const groups = data.background_groups.map(group => {
+                    const backgrounds = data.backgrounds.filter(background => background.backgrounds_group_id === group.id);
+                    return {
+                        ...group,
+                        backgrounds
+                    }
 
-                    });
-
-                    setBackgroundGroups(groups);
                 });
-        },
+
+                setBackgroundGroups(groups);
+            });
+    },
         []
     )
-    ;
+        ;
 
     const handleChooseBackground = (backgroundId) => {
 
@@ -48,9 +47,9 @@ const Background = () => {
         })
             .then(response => response.json())
             .then(data => {
-                    setSuccess(data.message);
-                    dispatch(setLivret({livret: data.livret}));
-                }
+                dispatch(setSuccess({ success: data.message}));
+                dispatch(setLivret({ livret: data.livret }));
+            }
             );
     }
 
@@ -62,16 +61,11 @@ const Background = () => {
                     <p>Fond actuel</p>
                     {livret.background && (
                         <img src={process.env.REACT_APP_URL + livret.background} alt="Fond actuel"
-                             className="img-fluid"/>
+                            className="img-fluid" />
                     )}
                 </div>
             </div>
             <p>Cliquez sur le fond que vous souhaitez pour le changer</p>
-            {success && (
-                <div className="alert alert-success">
-                    {success}
-                </div>
-            )}
             <div className="row w-100 d-flex justify-content-center">
                 {backgroundGroups.map(group => (
                     <div className="col-md-3" key={group.id}>
@@ -94,10 +88,10 @@ const Background = () => {
                                     group.backgrounds.length > 0 ?
                                         group.backgrounds.map((background) => (
                                             <div className={"card col-md-4 backgroup_card"} key={background.id}
-                                                 onClick={() => handleChooseBackground(background.id)}>
+                                                onClick={() => handleChooseBackground(background.id)}>
                                                 <img src={process.env.REACT_APP_URL + background.path}
-                                                     alt={background.name}
-                                                     className="img-fluid w-100 h-100"/>
+                                                    alt={background.name}
+                                                    className="img-fluid w-100 h-100" />
                                             </div>
                                         ))
                                         : <div className="alert alert-warning">Aucun fond disponible</div>

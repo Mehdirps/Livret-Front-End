@@ -1,14 +1,17 @@
 import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import InventoriesSearchForm from '../../components/dashboard/inventories/InventoriesSearchForm';
 import InventoriesTable from '../../components/dashboard/inventories/InventoriesTable';
 import InventoriesFilter from '../../components/dashboard/inventories/InventoriesFilter';
 import InventoriesExportPDF from '../../components/dashboard/inventories/InventoriesExportPDF';
+import { setError } from '../../stores/slices/livretSlice';
 
 const Inventories = () => {
     const token = useSelector(state => state.user.token);
     const [inventories, setInventories] = React.useState([]);
     const [filteredInventories, setFilteredInventories] = React.useState([]);
+
+    const dispatch = useDispatch();
 
     useEffect(() => {
         fetch(process.env.REACT_APP_API_URL + 'dashboard/inventories', {
@@ -23,7 +26,7 @@ const Inventories = () => {
                 setInventories(data.inventories);
                 setFilteredInventories(data.inventories);
             })
-            .catch(err => console.log(err));
+            .catch(err => dispatch(setError({ error: err })));
     }, [token]);
 
 

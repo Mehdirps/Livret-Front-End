@@ -1,6 +1,8 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
+import Error from '../Error';
+import Success from '../Success';
 
-const RegisterForm = ({setOpenLogin}) => {
+const RegisterForm = ({ setOpenLogin }) => {
 
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
@@ -65,16 +67,12 @@ const RegisterForm = ({setOpenLogin}) => {
             <h2 className="text-center">Inscription</h2>
             {
                 error ?
-                    <div className="alert alert-danger" role="alert">
-                        {error}
-                    </div> :
+                    <Error error={error} /> :
                     null
             }
             {
                 success ?
-                    <div className="alert alert-success" role="alert">
-                        {success}
-                    </div> :
+                    <Success success={success} /> :
                     null
             }
             <form onSubmit={(e) => {
@@ -147,7 +145,7 @@ const RegisterForm = ({setOpenLogin}) => {
                         <label htmlFor="first_name" className="form-label">Nom</label>
                         <input type="text" className="form-control" id="first_name" onChange={(e) => {
                             setFirstName(e.target.value);
-                        }} value={firstName}/>
+                        }} value={firstName} />
                         {
                             firstNameError !== "" ?
                                 <div className="alert alert-danger mt-2" role="alert">
@@ -160,7 +158,7 @@ const RegisterForm = ({setOpenLogin}) => {
                         <label htmlFor="last_name" className="form-label">Prénom</label>
                         <input type="text" className="form-control" id="last_name" onChange={(e) => {
                             setLastName(e.target.value);
-                        }} value={lastName}/>
+                        }} value={lastName} />
                         {
                             lastNameError !== "" ?
                                 <div className="alert alert-danger mt-2" role="alert">
@@ -174,7 +172,7 @@ const RegisterForm = ({setOpenLogin}) => {
                     <label htmlFor="email" className="form-label">Votre adresse e-mail</label>
                     <input type="email" className="form-control" id="email" onChange={(e) => {
                         setEmail(e.target.value);
-                    }} value={email}/>
+                    }} value={email} />
                     {
                         emailError !== "" ?
                             <div className="alert alert-danger mt-2" role="alert">
@@ -188,7 +186,7 @@ const RegisterForm = ({setOpenLogin}) => {
                         <label htmlFor="password" className="form-label">Mot de passe</label>
                         <input type="password" className="form-control" id="password" onChange={(e) => {
                             setPassword(e.target.value);
-                        }} value={password}/>
+                        }} value={password} />
                         {
                             passwordError !== "" ?
                                 <div className="alert alert-danger mt-2" role="alert">
@@ -201,9 +199,9 @@ const RegisterForm = ({setOpenLogin}) => {
                         <label htmlFor="password_confirmation" className="form-label">Confirmer votre mot de
                             passe</label>
                         <input type="password" className="form-control" id="password_confirmation"
-                               onChange={(e) => {
-                                   setConfirmPassword(e.target.value);
-                               }} value={confirmPassword}/>
+                            onChange={(e) => {
+                                setConfirmPassword(e.target.value);
+                            }} value={confirmPassword} />
                         {
                             confirmPasswordError !== "" ?
                                 <div className="alert alert-danger mt-2" role="alert">
@@ -233,7 +231,7 @@ const RegisterForm = ({setOpenLogin}) => {
                 </div>
                 <button type="submit" className="btn btn-primary mt-3">M'inscrire</button>
             </form>
-            <p className="text-center mt-3 text-secondary" style={{cursor: "pointer"}} onClick={() => {
+            <p className="text-center mt-3 text-secondary" style={{ cursor: "pointer" }} onClick={() => {
                 setOpenLogin(true);
                 localStorage.setItem('openLogin', true);
             }}>Déjà un compte ? Connectez-vous</p>

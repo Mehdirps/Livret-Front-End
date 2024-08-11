@@ -6,8 +6,6 @@ import LivretProfileForm from "../../components/dashboard/LivretProfileForm";
 
 const Profile = () => {
     const user = useSelector(state => state.user.user);
-    /*const successMessage = useSelector(state => state.messages.success);
-    const errorMessage = useSelector(state => state.messages.error);*/
 
     return (
         <div className="container">
@@ -28,16 +26,7 @@ const Profile = () => {
                             <h1>{user ? user.name : <Loading/> }</h1>
                         </div>
                     </div>
-                    {/*{successMessage && (
-                        <div className="alert alert-success">
-                            {successMessage}
-                        </div>
-                    )}
-                    {errorMessage && (
-                        <div className="alert alert-danger">
-                            {errorMessage}
-                        </div>
-                    )}*/}
+                    <hr/>
                     <UserProfileForm/>
                     <hr/>
                     <LivretProfileForm/>

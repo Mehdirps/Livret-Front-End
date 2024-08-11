@@ -1,9 +1,13 @@
 import React from "react";
-import {useSelector} from "react-redux";
+import {useSelector, useDispatch} from "react-redux";
+import { setError, setSuccess } from "../../../stores/slices/livretSlice";
 
 const SuggestionTable = ({suggestions,setRequestSuccess}) => {
 
     const token = useSelector(state => state.user.token);
+
+    const dispatch = useDispatch();
+
     const handleStatusChange = (e) => {
         const id = e.target.getAttribute('data-id');
 
@@ -19,8 +23,11 @@ const SuggestionTable = ({suggestions,setRequestSuccess}) => {
             })
         })
             .then(response => response.json())
-            .then(data => setRequestSuccess(true))
-            .catch(error => console.error(error));
+            .then(data => {
+                setRequestSuccess(true)
+                dispatch(setSuccess({success: data.message}));
+            })
+            .catch(error => dispatch(setError({error: error})));
     }
 
     return (

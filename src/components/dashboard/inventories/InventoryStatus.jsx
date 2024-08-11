@@ -1,8 +1,10 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { setSuccess, setError } from '../../../stores/slices/livretSlice';
 
 const InventoryStatus = ({ inventory }) => {
     const token = useSelector(state => state.user.token);
+    const dispatch = useDispatch();
 
     const handleChange = (e) => {
         const value = e.target.value;
@@ -19,8 +21,14 @@ const InventoryStatus = ({ inventory }) => {
             })
         })
             .then(res => res.json())
-            .then(data => console.log(data))
-            .catch(err => console.log(err));
+            .then(data => {
+                if (data.error) {
+                    dispatch(setError({ error: data.error }));
+                    return;
+                }
+                dispatch(setSuccess({ success: data.message}));
+            })
+            .catch(err => setError({ error: err }));
     }
 
     return (

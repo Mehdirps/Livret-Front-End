@@ -1,7 +1,11 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { setSuccess, setError } from '../../../stores/slices/livretSlice';
+
 
 const InventoryDelete = ({ id }) => {
+
+    const dispatch = useDispatch();
 
     const token = useSelector(state => state.user.token);
 
@@ -15,9 +19,13 @@ const InventoryDelete = ({ id }) => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                if (data.error) {
+                    dispatch(setError({ error: data.error }));
+                    return;
+                }
+                dispatch(setSuccess({ success: data.message}));
             })
-            .catch(err => console.log(err));
+            .catch(err => setError({ error: err }));
     }
 
     return (

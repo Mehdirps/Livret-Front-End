@@ -1,8 +1,12 @@
 import React from 'react';
 import jsPDF from 'jspdf';
-import 'jspdf-autotable'
+import 'jspdf-autotable';
+import { useDispatch } from 'react-redux';
+import { setSuccess } from '../../../stores/slices/livretSlice';
 
 const InventoriesExportPDF = ({ inventories }) => {
+
+    const dispatch = useDispatch();
 
     const exportPdf = () => {
         const doc = new jsPDF();
@@ -26,6 +30,7 @@ const InventoriesExportPDF = ({ inventories }) => {
         });
     
         doc.save('inventories.pdf');
+        dispatch(setSuccess({ success: 'Le fichier PDF a été exporté avec succès' }));
     };
     
 

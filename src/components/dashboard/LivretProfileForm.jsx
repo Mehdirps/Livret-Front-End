@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {useSelector, useDispatch} from "react-redux";
 import {setLivret} from "../../stores/slices/livretSlice";
+import {setSuccess, setError} from "../../stores/slices/livretSlice";
 
 const LivretProfileForm = () => {
     const livret = useSelector(state => state.livret.livret);
@@ -19,9 +20,6 @@ const LivretProfileForm = () => {
     const [twitter, setTwitter] = useState(livret?.twitter || '');
     const [tripadvisor, setTripadvisor] = useState(livret?.tripadvisor || '');
     const [logo, setLogo] = useState(null);
-
-    const [error, setError] = useState("");
-    const [success, setSuccess] = useState("");
 
     const dispatch = useDispatch();
 
@@ -57,17 +55,17 @@ const LivretProfileForm = () => {
         }).then(response => response.json())
             .then(data => {
                 if (data.error) {
-                    setError(data.error);
-                    setSuccess("");
+                    dispatch(setError({error: data.error}));
+                    dispatch(setSuccess({success: ""}));
                 } else {
-                    setSuccess(data.message);
-                    setError("");
+                    dispatch(setSuccess({success: data.message}));
+                    dispatch(setError({error: ""}));
                     dispatch(setLivret({livret: data.livret}));
                 }
             })
             .catch(error => {
-                setError(error.error);
-                setSuccess("");
+                dispatch(setError({error: error}));
+                dispatch(setSuccess({success: ""}));
             })
     };
 
@@ -75,8 +73,6 @@ const LivretProfileForm = () => {
         <div className="col-12">
             <form id="update-livret-form" onSubmit={handleSubmit} className="p-5 bg-light rounded"
                   encType="multipart/form-data">
-                {error && <div className="alert alert-danger">{error}</div>}
-                {success && <div className="alert alert-success">{success}</div>}
                 <h3><i className="bi bi-info-circle"></i> Les informations du livret</h3>
                 <div className="form-group">
                     <label htmlFor="livret_name" className="form-label"><i className="bi bi-building"></i>Nom du livret</label>

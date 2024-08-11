@@ -1,13 +1,16 @@
 import React, {useEffect, useState} from 'react';
-import {useSelector} from "react-redux";
+import {useSelector, useDispatch} from "react-redux";
 import Loading from "../../components/Loading";
 import StatsCard from "../../components/dashboard/StatsCard";
 import StatsBetweenDatesForm from "../../components/dashboard/StatsBetweenDatesForm";
 import ExportStats from "../../components/dashboard/ExportStats";
+import { setError } from '../../stores/slices/livretSlice';
 
 const Stats = () => {
     const token = useSelector(state => state.user.token);
     const [statsDatas, setStatsDatas] = useState(null);
+
+    const dispatch = useDispatch();
 
     useEffect(() => {
         fetch(`${process.env.REACT_APP_API_URL}dashboard/stats/`, {
@@ -22,7 +25,7 @@ const Stats = () => {
                 setStatsDatas(data);
             })
             .catch((error) => {
-                console.error('Error:', error);
+                dispatch(setError({ error: error }));
             });
     }, []);
 

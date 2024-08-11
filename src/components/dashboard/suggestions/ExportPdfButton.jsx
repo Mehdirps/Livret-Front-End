@@ -1,9 +1,11 @@
 import React from "react";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
-import {useSelector} from "react-redux";
+import {useSelector, useDispatch} from "react-redux";
+import {setSuccess} from "../../../stores/slices/livretSlice";
 
 const ExportPdfButton = ({suggestions}) => {
+    const dispatch = useDispatch();
 
     const livret = useSelector(state => state.livret.livret);
     const handleExportPdf = () => {
@@ -18,6 +20,7 @@ const ExportPdfButton = ({suggestions}) => {
         });
 
         doc.save('suggestions.pdf');
+        dispatch(setSuccess({success: 'Le fichier PDF a été exporté avec succès'}));
     };
 
     return (
