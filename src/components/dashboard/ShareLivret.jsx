@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 
 const ShareLivret = () => {
     const livret = useSelector((state) => state.livret.livret);
-    const user = useSelector((state) => state.user);
 
     const shareUrl = `${process.env.REACT_APP_FRONTEND_URL}livret/${livret.slug}/${livret.id}`;
 

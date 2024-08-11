@@ -28,10 +28,10 @@ const Sidebar = () => {
                     </NavLink>
                 </li>
                 <li className="nav-item w-100 dropdown">
-                    <a className="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
+                    <Link className="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         <i className="bi bi-book"></i> Mon livret d'accueil
-                    </a>
+                    </Link>
                     <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><Link className="dropdown-item" to="/dashboard/edit_livret">Editer</Link></li>
                         <li><Link className="dropdown-item" to="/dashboard/background">Changer le fond</Link></li>
