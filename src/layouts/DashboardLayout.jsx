@@ -5,6 +5,7 @@ import { clearUser } from '../stores/slices/userSlice';
 import Sidebar from '../components/dashboard/Sidebar';
 import Error from '../components/Error';
 import Success from '../components/Success';
+import { setError, setSuccess } from '../stores/slices/livretSlice';
 
 const DashboardLayout = () => {
     const user = useSelector(state => state.user.user);
@@ -38,6 +39,13 @@ const DashboardLayout = () => {
                 });
         }
     }, [active_path, user, token, dispatch, navigate]);
+
+    useEffect(() => {
+        setTimeout(() => {
+            dispatch(setError({ error: null }));
+            dispatch(setSuccess({ success: null }));
+        }, 5000);
+    }, [error, success, dispatch]);
 
     return (
         <div className="row" style={{ minHeight: '100vh', maxWidth: '100vw' }}>
