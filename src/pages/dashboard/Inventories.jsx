@@ -30,7 +30,7 @@ const Inventories = () => {
     return (
         <div className="container">
             <h2 className="mb-4">Etats de lieux</h2>
-            <InventoriesSearchForm />
+            <InventoriesSearchForm setFilteredInventories={setFilteredInventories} />
             <hr />
             <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addInventoryModal">
                 Ajouter un état des lieux
