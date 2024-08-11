@@ -2,7 +2,7 @@ import React from 'react';
 
 const Success = ({ success }) => {
     return (
-        <div className="alert alert-danger" role="alert">
+        <div className="alert alert-success" role="alert">
             {success}
         </div>
     );
