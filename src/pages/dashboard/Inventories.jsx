@@ -37,7 +37,7 @@ const Inventories = () => {
             </button>
             <hr />
             <p>Exporter en PDF les états des lieux affichées dans le tableau</p>
-            <InventoriesExportPDF />
+            <InventoriesExportPDF inventories={inventories} />
             <hr />
             <InventoriesFilter inventories={inventories} setFilteredInventories={setFilteredInventories} />
             <InventoriesTable inventories={filteredInventories} />
