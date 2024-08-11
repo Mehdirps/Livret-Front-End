@@ -1,5 +1,6 @@
 import React from 'react';
 import InventoryDelete from './InventoryDelete';
+import InventoryStatus from './InventoryStatus';
 
 const InventoriesTable = ({ inventories }) => {
     return (
@@ -24,16 +25,7 @@ const InventoriesTable = ({ inventories }) => {
                             <td>{inventory.end_date}</td>
                             <td>{inventory.client_comment}</td>
                             <td>
-                                <form>
-                                    <select
-                                        name="status"
-                                        className="form-control status"
-                                        value={inventory.status}
-                                    >
-                                        <option value="in_progress">En cours</option>
-                                        <option value="completed">Terminé</option>
-                                    </select>
-                                </form>
+                               <InventoryStatus inventory={inventory} />
                             </td>
                             <td>
                                 {inventory.attachment_names ? (
@@ -55,7 +47,7 @@ const InventoriesTable = ({ inventories }) => {
                                 ) : 'Aucune pièce jointe'}
                             </td>
                             <td>
-                                <InventoryDelete id={inventory.id}/>
+                                <InventoryDelete id={inventory.id} />
                             </td>
                         </tr>
                     )) : (
