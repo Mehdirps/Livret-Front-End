@@ -1,4 +1,5 @@
 import React from 'react';
+import InventoryDelete from './InventoryDelete';
 
 const InventoriesTable = ({ inventories }) => {
     return (
@@ -54,12 +55,7 @@ const InventoriesTable = ({ inventories }) => {
                                 ) : 'Aucune pièce jointe'}
                             </td>
                             <td>
-                                <button
-                                    type="button"
-                                    className="btn btn-danger"
-                                >
-                                    Supprimer
-                                </button>
+                                <InventoryDelete id={inventory.id}/>
                             </td>
                         </tr>
                     )) : (
