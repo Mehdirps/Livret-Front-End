@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import InventoriesSearchForm from '../../components/dashboard/inventories/InventoriesSearchForm';
 import InventoriesTable from '../../components/dashboard/inventories/InventoriesTable';
@@ -9,8 +9,8 @@ import InvenvotyAffForm from '../../components/dashboard/inventories/InventoryAd
 
 const Inventories = () => {
     const token = useSelector(state => state.user.token);
-    const [inventories, setInventories] = React.useState([]);
-    const [filteredInventories, setFilteredInventories] = React.useState([]);
+    const [inventories, setInventories] = useState([]);
+    const [filteredInventories, setFilteredInventories] = useState([]);
 
     const dispatch = useDispatch();
 
