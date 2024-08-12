@@ -12,6 +12,7 @@ import Background from "../../pages/dashboard/Background";
 import Stats from "../../pages/dashboard/Stats";
 import Suggest from "../../pages/dashboard/Suggest";
 import Inventories from '../../pages/dashboard/Inventories';
+import Shop from '../../pages/dashboard/Shop';
 
 const Index = () => {
     return (
@@ -30,6 +31,7 @@ const Index = () => {
                     <Route path={'stats'} element={<Stats />} />
                     <Route path={'suggestions'} element={<Suggest />} />
                     <Route path={'inventories'} element={<Inventories />} />
+                    <Route path={'shop'} element={<Shop />} />
                 </Route>
             </Routes>
         </BrowserRouter>
