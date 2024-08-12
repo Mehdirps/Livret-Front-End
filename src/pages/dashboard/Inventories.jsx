@@ -5,6 +5,7 @@ import InventoriesTable from '../../components/dashboard/inventories/Inventories
 import InventoriesFilter from '../../components/dashboard/inventories/InventoriesFilter';
 import InventoriesExportPDF from '../../components/dashboard/inventories/InventoriesExportPDF';
 import { setError } from '../../stores/slices/livretSlice';
+import InvenvotyAffForm from '../../components/dashboard/inventories/InventoryAddForm';
 
 const Inventories = () => {
     const token = useSelector(state => state.user.token);
@@ -35,9 +36,7 @@ const Inventories = () => {
             <h2 className="mb-4">Etats de lieux</h2>
             <InventoriesSearchForm setFilteredInventories={setFilteredInventories} />
             <hr />
-            <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addInventoryModal">
-                Ajouter un état des lieux
-            </button>
+            <InvenvotyAffForm />
             <hr />
             <p>Exporter en PDF les états des lieux affichées dans le tableau</p>
             <InventoriesExportPDF inventories={inventories} />
