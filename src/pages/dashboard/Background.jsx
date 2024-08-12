@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import { setLivret, setSuccess } from "../../stores/slices/livretSlice";
+import Loading from "../../components/Loading";
 
 const Background = () => {
     const livret = useSelector(state => state.livret.livret);
@@ -51,6 +52,12 @@ const Background = () => {
                 dispatch(setLivret({ livret: data.livret }));
             }
             );
+    }
+
+    if (backgroundGroups.length === 0) {
+        return (
+            <Loading />
+        );
     }
 
     return (
