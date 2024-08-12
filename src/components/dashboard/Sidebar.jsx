@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import LogoutButton from "../auth/LogoutButton";
 import { useSelector } from "react-redux";
-import ShareLivret from './ShareLivret';
 
 const Sidebar = () => {
 
@@ -75,7 +74,6 @@ const Sidebar = () => {
             <button type="button" className="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#shareModal">
                 Partager
             </button>
-            <ShareLivret />
         </div>
     );
 };

@@ -6,6 +6,7 @@ import Sidebar from '../components/dashboard/Sidebar';
 import Error from '../components/Error';
 import Success from '../components/Success';
 import { setError, setSuccess } from '../stores/slices/livretSlice';
+import ShareLivret from '../components/dashboard/ShareLivret';
 
 const DashboardLayout = () => {
     const user = useSelector(state => state.user.user);
@@ -67,6 +68,7 @@ const DashboardLayout = () => {
                     <Outlet />
                 </main>
             </div>
+            <ShareLivret />
         </div>
     );
 };
