@@ -60,7 +60,7 @@ const Sidebar = () => {
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to="/dashboard/products" className="nav-link text-white">
+                    <NavLink to="/dashboard/shop" className="nav-link text-white">
                         <i className="bi bi-shop"></i> Notre boutique
                     </NavLink>
                 </li>
