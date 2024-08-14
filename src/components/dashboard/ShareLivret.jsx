@@ -2,9 +2,9 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 const ShareLivret = () => {
-    const livret = useSelector((state) => state.livret.livret);
+    const livret = useSelector((state) => state.livret.livret) || {};
 
-    const shareUrl = `${process.env.REACT_APP_FRONTEND_URL}livret/${livret.slug}/${livret.id}`;
+    const shareUrl = `${process.env.REACT_APP_API_URL}livret/${livret.slug}/${livret.id}`;
 
     const copyLink = () => {
         navigator.clipboard.writeText(shareUrl);
