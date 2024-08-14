@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setError, setSuccess } from '../../../stores/slices/livretSlice';
 
-const InvenvotyAffForm = () => {
+const InventoryAddForm = () => {
     const token = useSelector(state => state.user.token);
 
     const [startDate, setStartDate] = useState('');
@@ -151,4 +151,4 @@ const InvenvotyAffForm = () => {
     );
 };
 
-export default InvenvotyAffForm;
+export default InventoryAddForm;

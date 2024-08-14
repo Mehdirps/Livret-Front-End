@@ -5,7 +5,7 @@ import InventoriesTable from '../../components/dashboard/inventories/Inventories
 import InventoriesFilter from '../../components/dashboard/inventories/InventoriesFilter';
 import InventoriesExportPDF from '../../components/dashboard/inventories/InventoriesExportPDF';
 import { setError } from '../../stores/slices/livretSlice';
-import InvenvotyAffForm from '../../components/dashboard/inventories/InventoryAddForm';
+import InventoryAddForm from '../../components/dashboard/inventories/InventoryAddForm';
 
 const Inventories = () => {
     const token = useSelector(state => state.user.token);
@@ -36,7 +36,7 @@ const Inventories = () => {
             <h2 className="mb-4">Etats de lieux</h2>
             <InventoriesSearchForm setFilteredInventories={setFilteredInventories} />
             <hr />
-            <InvenvotyAffForm />
+            <InventoryAddForm />
             <hr />
             <p>Exporter en PDF les états des lieux affichées dans le tableau</p>
             <InventoriesExportPDF inventories={inventories} />
