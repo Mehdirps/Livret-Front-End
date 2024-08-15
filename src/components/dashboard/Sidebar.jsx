@@ -2,13 +2,14 @@ import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import LogoutButton from "../auth/LogoutButton";
 import { useSelector } from "react-redux";
+import SupportContact from './SupportContact';
 
 const Sidebar = () => {
 
     const livret = useSelector(state => state.livret.livret)
 
     return (
-        <div className="d-flex flex-column p-3 text-white bg-dark sidebar">
+        <div className="d-flex flex-column p-3 text-white bg-dark sidebar" style={{zIndex: 1050}}>
             <a href="/" className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                 <span className="fs-4">Dashboard</span>
             </a>
@@ -64,9 +65,7 @@ const Sidebar = () => {
                 </li>
             </ul>
             <hr />
-            <button type="button" className="btn btn-warning" data-bs-toggle="modal" data-bs-target="#contactModal">
-                Nous contacter
-            </button>
+            <SupportContact />
             <button type="button" className="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#shareModal">
                 Partager
             </button>
