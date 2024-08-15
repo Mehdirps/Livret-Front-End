@@ -23,6 +23,8 @@ const LivretProfileForm = () => {
 
     const dispatch = useDispatch();
 
+    const token = useSelector(state => state.user.token);
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -49,7 +51,7 @@ const LivretProfileForm = () => {
         fetch(process.env.REACT_APP_API_URL + 'dashboard/profile/update_livret', {
             method: 'POST',
             headers: {
-                'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+                'Authorization': 'Bearer ' + token,
             },
             body: formData,
         }).then(response => response.json())

@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setSuccess, setError } from "../../stores/slices/livretSlice";
 
 
 const PasswordProfileForm = () => {
     const dispatch = useDispatch();
-    const token = sessionStorage.getItem('token');
+    const token = useSelector(state => state.user.token);
 
     const [oldPassword, setOldPassword] = useState('');
     const [password, setPassword] = useState('');
