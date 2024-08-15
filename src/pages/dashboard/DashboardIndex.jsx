@@ -1,31 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import {useSelector, useDispatch} from "react-redux";
-import {setLivret} from "../../stores/slices/livretSlice";
+
 import Loading from "../../components/Loading";
 import FAQ from "../../components/dashboard/FAQ";
-import { setError } from '../../stores/slices/livretSlice';
+
 
 const DashboardIndex = () => {
-
-    const token = useSelector(state => state.user.token);
     const livret = useSelector(state => state.livret.livret);
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        fetch(`${process.env.REACT_APP_API_URL}dashboard`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            },
-        }).then(response => response.json())
-            .then(data => {
-                dispatch(setLivret({livret: data.livret}));
-            })
-            .catch((error) => {
-                dispatch(setError({ error: error }));
-            });
-    }, []);
 
     return (
         <div className="container">

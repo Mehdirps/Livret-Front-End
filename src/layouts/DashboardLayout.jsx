@@ -5,8 +5,9 @@ import { clearUser } from '../stores/slices/userSlice';
 import Sidebar from '../components/dashboard/Sidebar';
 import Error from '../components/Error';
 import Success from '../components/Success';
-import { setError, setSuccess } from '../stores/slices/livretSlice';
+import { clearLivret, setError, setSuccess } from '../stores/slices/livretSlice';
 import ShareLivret from '../components/dashboard/ShareLivret';
+import { setLivret } from '../stores/slices/livretSlice';
 
 const DashboardLayout = () => {
     const user = useSelector(state => state.user.user);
@@ -22,7 +23,8 @@ const DashboardLayout = () => {
     useEffect(() => {
         if (!user || !token) {
             dispatch(clearUser());
-            sessionStorage.setItem('openLogin', true);
+            dispatch(clearLivret());
+            localStorage.setItem('openLogin', true);
             navigate('/connexion');
         } else {
             fetch(`${process.env.REACT_APP_API_URL}dashboard/verify_token`, {
@@ -34,8 +36,23 @@ const DashboardLayout = () => {
                 .then(data => {
                     if (data.error || data.jwt_error) {
                         dispatch(clearUser());
-                        sessionStorage.setItem('openLogin', true);
+                        dispatch(clearLivret());
+                        localStorage.setItem('openLogin', true);
                         navigate('/connexion');
+                    }else{
+                        fetch(`${process.env.REACT_APP_API_URL}dashboard`, {
+                            method: 'GET',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Authorization': `Bearer ${token}`
+                            },
+                        }).then(response => response.json())
+                            .then(data => {
+                                dispatch(setLivret({livret: data.livret}));
+                            })
+                            .catch((error) => {
+                                dispatch(setError({ error: error }));
+                            });
                     }
                 });
         }

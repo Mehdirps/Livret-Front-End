@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import LogoutButton from "../auth/LogoutButton";
 import { useSelector } from "react-redux";
@@ -6,13 +6,6 @@ import { useSelector } from "react-redux";
 const Sidebar = () => {
 
     const livret = useSelector(state => state.livret.livret)
-    const [id, setId] = useState("")
-    const [slug, setSlug] = useState("")
-
-    useEffect(() => {
-        setId(livret.id);
-        setSlug(livret.slug);
-    }, []);
 
     return (
         <div className="d-flex flex-column p-3 text-white bg-dark sidebar">
@@ -35,7 +28,10 @@ const Sidebar = () => {
                         <li><Link className="dropdown-item" to="/dashboard/edit_livret">Editer</Link></li>
                         <li><Link className="dropdown-item" to="/dashboard/background">Changer le fond</Link></li>
                         <li><hr className="dropdown-divider" /></li>
-                        <li><Link className="dropdown-item" to={`/livret/${slug}/${id}`} target="_blank">Voir</Link></li>
+                        {
+                            livret &&
+                            <li><Link className="dropdown-item" to={`/livret/${livret.slug}/${livret.id}`} target="_blank">Voir</Link></li>
+                        }
                     </ul>
                 </li>
                 <li>
