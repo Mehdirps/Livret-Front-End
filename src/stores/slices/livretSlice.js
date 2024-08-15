@@ -2,8 +2,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    livret: JSON.parse(localStorage.getItem('livret')) || null,
-    modules: JSON.parse(localStorage.getItem('modules')) || null,
+    livret: JSON.parse(sessionStorage.getItem('livret')) || null,
+    modules: JSON.parse(sessionStorage.getItem('modules')) || null,
     success: null,
     error: null,
 };
@@ -14,11 +14,11 @@ const livretSlice = createSlice({
     reducers: {
         setLivret: (state, action) => {
             state.livret = action.payload.livret;
-            localStorage.setItem('livret', JSON.stringify(action.payload.livret));
+            sessionStorage.setItem('livret', JSON.stringify(action.payload.livret));
         },
         setModules: (state, action) => {
             state.modules = action.payload.modules;
-            localStorage.setItem('modules', JSON.stringify(action.payload.modules));
+            sessionStorage.setItem('modules', JSON.stringify(action.payload.modules));
         },
         setSuccess: (state, action) => {
             state.success = action.payload.success;

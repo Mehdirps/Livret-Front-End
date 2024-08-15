@@ -49,7 +49,7 @@ const LivretProfileForm = () => {
         fetch(process.env.REACT_APP_API_URL + 'dashboard/profile/update_livret', {
             method: 'POST',
             headers: {
-                'Authorization': 'Bearer ' + localStorage.getItem('token'),
+                'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
             },
             body: formData,
         }).then(response => response.json())

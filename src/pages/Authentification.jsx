@@ -4,7 +4,7 @@ import RegisterForm from "../components/auth/RegisterForm";
 
 const Authentification = () => {
 
-    const [openLogin, setOpenLogin] = useState(localStorage.getItem('openLogin') === 'true');
+    const [openLogin, setOpenLogin] = useState(sessionStorage.getItem('openLogin') === 'true');
 
     return (
         <div className="p-5">

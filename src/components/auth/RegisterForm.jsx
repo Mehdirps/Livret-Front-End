@@ -233,7 +233,7 @@ const RegisterForm = ({ setOpenLogin }) => {
             </form>
             <p className="text-center mt-3 text-secondary" style={{ cursor: "pointer" }} onClick={() => {
                 setOpenLogin(true);
-                localStorage.setItem('openLogin', true);
+                sessionStorage.setItem('openLogin', true);
             }}>Déjà un compte ? Connectez-vous</p>
         </div>
     );

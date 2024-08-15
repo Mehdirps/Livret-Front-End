@@ -5,7 +5,7 @@ import { setSuccess, setError } from "../../stores/slices/livretSlice";
 
 const PasswordProfileForm = () => {
     const dispatch = useDispatch();
-    const token = localStorage.getItem('token');
+    const token = sessionStorage.getItem('token');
 
     const [oldPassword, setOldPassword] = useState('');
     const [password, setPassword] = useState('');

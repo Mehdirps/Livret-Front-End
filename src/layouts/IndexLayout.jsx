@@ -19,7 +19,7 @@ const IndexLayout = () => {
                             </li>
                             <li className="nav-item">
                                 <NavLink className="nav-link" to={'/connexion'} onClick={() => {
-                                    localStorage.setItem('openLogin', true);
+                                    sessionStorage.setItem('openLogin', true);
                                 }}>Connexion</NavLink>
                             </li>
                         </ul>

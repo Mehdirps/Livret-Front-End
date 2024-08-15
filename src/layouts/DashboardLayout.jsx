@@ -22,7 +22,7 @@ const DashboardLayout = () => {
     useEffect(() => {
         if (!user || !token) {
             dispatch(clearUser());
-            localStorage.setItem('openLogin', true);
+            sessionStorage.setItem('openLogin', true);
             navigate('/connexion');
         } else {
             fetch(`${process.env.REACT_APP_API_URL}dashboard/verify_token`, {
@@ -34,7 +34,7 @@ const DashboardLayout = () => {
                 .then(data => {
                     if (data.error || data.jwt_error) {
                         dispatch(clearUser());
-                        localStorage.setItem('openLogin', true);
+                        sessionStorage.setItem('openLogin', true);
                         navigate('/connexion');
                     }
                 });

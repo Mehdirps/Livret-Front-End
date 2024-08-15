@@ -2,9 +2,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    user: JSON.parse(localStorage.getItem('user')) || null,
-    token: localStorage.getItem('token') || null,
-    first_login: localStorage.getItem('token') || null,
+    user: JSON.parse(sessionStorage.getItem('user')) || null,
+    token: sessionStorage.getItem('token') || null,
+    first_login: sessionStorage.getItem('token') || null,
 };
 
 const userSlice = createSlice({
@@ -16,22 +16,22 @@ const userSlice = createSlice({
             state.token = action.payload.token;
             state.first_login = action.payload.user.first_login;
 
-            localStorage.setItem('user', JSON.stringify(action.payload.user));
-            localStorage.setItem('token', action.payload.token);
-            localStorage.setItem('first_login', action.payload.user.first_login);
+            sessionStorage.setItem('user', JSON.stringify(action.payload.user));
+            sessionStorage.setItem('token', action.payload.token);
+            sessionStorage.setItem('first_login', action.payload.user.first_login);
         },
         clearUser: (state) => {
             state.user = null;
             state.token = null;
             state.first_login = null;
 
-            localStorage.removeItem('user');
-            localStorage.removeItem('token');
-            localStorage.removeItem('first_login');
+            sessionStorage.removeItem('user');
+            sessionStorage.removeItem('token');
+            sessionStorage.removeItem('first_login');
         },
         setUserAfterUpdate: (state, action) => {
             state.user = action.payload.user;
-            localStorage.setItem('user', JSON.stringify(action.payload.user));
+            sessionStorage.setItem('user', JSON.stringify(action.payload.user));
         }
     },
 });

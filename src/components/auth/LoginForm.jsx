@@ -85,7 +85,7 @@ const LoginForm = ({setOpenLogin}) => {
             </form>
             <p className="text-center mt-3 text-secondary" style={{cursor: "pointer"}} onClick={() => {
                 setOpenLogin(false);
-                localStorage.setItem('openLogin', false);
+                sessionStorage.setItem('openLogin', false);
             }}>Pas encore de compte ? Inscrivez-vous</p>
         </div>
     );
