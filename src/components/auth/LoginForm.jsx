@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {useDispatch} from "react-redux";
 import {clearUser, setUser} from "../../stores/slices/userSlice";
+import { setLivret } from '../../stores/slices/livretSlice';
 import {useNavigate} from "react-router-dom";
 import Error from "../Error";
 
@@ -39,9 +40,11 @@ const LoginForm = ({setOpenLogin}) => {
                 if (data.error) {
                     setError(data.error);
                     dispatch(clearUser());
+                    dispatch(setLivret({livret: null}));
                     return;
                 } else {
                     dispatch(setUser({user: data.user, token: data.token}));
+                    dispatch(setLivret({livret: data.livret}));
 
                     if (data.first_login) {
                         navigate('/dashboard/premiere_connexion');
