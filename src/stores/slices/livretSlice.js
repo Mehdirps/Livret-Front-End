@@ -16,6 +16,12 @@ const livretSlice = createSlice({
             state.livret = action.payload.livret;
             sessionStorage.setItem('livret', JSON.stringify(action.payload.livret));
         },
+        clearLivret: (state) => {
+            state.livret = null;
+            state.modules = null;
+            sessionStorage.removeItem('livret');
+            sessionStorage.removeItem('modules');
+        },
         setModules: (state, action) => {
             state.modules = action.payload.modules;
             sessionStorage.setItem('modules', JSON.stringify(action.payload.modules));
@@ -29,5 +35,5 @@ const livretSlice = createSlice({
     },
 });
 
-export const { setLivret, setModules, setError, setSuccess } = livretSlice.actions;
+export const { setLivret, setModules, setError, setSuccess, clearLivret } = livretSlice.actions;
 export default livretSlice.reducer;

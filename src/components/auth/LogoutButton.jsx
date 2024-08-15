@@ -1,6 +1,7 @@
 import React from 'react';
-import {clearUser} from "../../stores/slices/userSlice";
-import {useDispatch} from "react-redux";
+import { clearUser } from "../../stores/slices/userSlice";
+import { clearLivret } from '../../stores/slices/livretSlice';
+import { useDispatch } from "react-redux";
 
 const LogoutButton = () => {
 
@@ -8,6 +9,7 @@ const LogoutButton = () => {
 
     const handleLogout = () => {
         dispatch(clearUser());
+        dispatch(clearLivret());
     }
 
     return (
