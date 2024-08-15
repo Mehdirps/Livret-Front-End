@@ -10,9 +10,9 @@ const Sidebar = () => {
 
     return (
         <div className="d-flex flex-column p-3 text-white bg-dark sidebar" style={{zIndex: 1050}}>
-            <a href="/" className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+            <NavLink to="/dashboard" className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                 <span className="fs-4">Dashboard</span>
-            </a>
+            </NavLink>
             <hr />
             <ul className="nav nav-pills flex-column mb-auto">
                 <li className="nav-item w-100">
