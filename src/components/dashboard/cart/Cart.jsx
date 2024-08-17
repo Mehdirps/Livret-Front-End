@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import RemoveProduct from './RemoveProduct';
+import ChangeProductQuantity from './ChangeProductQuantity';
+import { useSelector } from 'react-redux';
 
 const Cart = () => {
-    const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')) || []);
+    const cart = useSelector(state => state.cart.cart);
 
     const calculateTotal = () => {
         return cart.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2);
@@ -44,8 +46,8 @@ const Cart = () => {
                                                     <span className="text-muted">
                                                         {(product.price * product.quantity).toFixed(2)}€
                                                     </span>
-                                                    <input style={{width:'70px'}} className='form-control' type="number" name="" id="" defaultValue={product.quantity} />
-                                                    <RemoveProduct productId={product.id} setCart={setCart} />
+                                                    <ChangeProductQuantity product={product} />
+                                                    <RemoveProduct productId={product.id} />
                                                 </div>
                                             </li>
                                         ))}
