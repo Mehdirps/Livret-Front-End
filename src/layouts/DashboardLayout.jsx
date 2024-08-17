@@ -21,7 +21,7 @@ const DashboardLayout = () => {
     const active_path = window.location.pathname;
 
     useEffect(() => {
-        if (!user || !token) {
+        if (!token) {
             dispatch(clearUser());
             dispatch(clearLivret());
             localStorage.setItem('openLogin', true);
@@ -58,7 +58,7 @@ const DashboardLayout = () => {
                     }
                 });
         }
-    }, [active_path, user, token, dispatch, navigate]);
+    }, [active_path]);
 
     useEffect(() => {
         setTimeout(() => {
