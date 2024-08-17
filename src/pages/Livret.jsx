@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import ModuleWifi from "../components/modules/ModuleWifi";
 import ModuleDigicode from "../components/modules/ModuleDigicode";
 import ModuleEndInfos from "../components/modules/ModuleEndInfos";
@@ -10,12 +11,17 @@ import ModuleNearbyPlaces from "../components/modules/ModuleNearbyPlaces";
 import HomeInfosModal from "../components/modules/HomeInfosModal";
 import Loading from "../components/Loading";
 import LivretFooter from '../components/LivretFooter';
+import Error from '../components/Error';
+import Success from '../components/Success';
 
 
 const Livret = () => {
     const { slug, id } = useParams();
     const [livret, setLivret] = useState(null);
     const [modules, setModules] = useState(null);
+
+    const error = useSelector(state => state.livret.error);
+    const success = useSelector(state => state.livret.success);
 
     useEffect(() => {
         fetch(`${process.env.REACT_APP_API_URL}livret/${slug}/${id}`)
@@ -65,6 +71,16 @@ const Livret = () => {
                 </div>
             </main>
             <LivretFooter livret={livret} />
+            {
+                        error && (
+                            <Error error={error} />
+                        )
+                    }
+                    {
+                        success && (
+                            <Success success={success} />
+                        )
+                    }
         </div>
     );
 };
