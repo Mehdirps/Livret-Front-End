@@ -1,6 +1,10 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { setCart } from '../../stores/slices/cartSlice';
 
 const ProductCard = ({ product }) => {
+
+    const dispatch = useDispatch();
 
     const addToCart = (product) => {
         if (localStorage.getItem('cart') === null) {
@@ -17,7 +21,7 @@ const ProductCard = ({ product }) => {
             cart.push(product);
         }
 
-        localStorage.setItem('cart', JSON.stringify(cart));
+        dispatch(setCart({ cart: cart }));
     }
 
     return (
