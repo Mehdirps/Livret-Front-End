@@ -3,7 +3,11 @@ import { Link, NavLink } from 'react-router-dom';
 import LogoutButton from "../auth/LogoutButton";
 import { useSelector } from "react-redux";
 import SupportContact from './SupportContact';
+<<<<<<< HEAD
 import Cart from './cart/Cart';
+=======
+import Cart from './Cart';
+>>>>>>> 4badf587ec4ffec0584bb305fe2c1da4497c112a
 
 const Sidebar = () => {
 
