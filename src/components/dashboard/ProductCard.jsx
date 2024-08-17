@@ -1,9 +1,12 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setCart } from '../../stores/slices/cartSlice';
+
 
 const ProductCard = ({ product }) => {
 
+    const cart = useSelector(state => state.cart.cart);
+    
     const dispatch = useDispatch();
 
     const addToCart = (product) => {
@@ -11,7 +14,6 @@ const ProductCard = ({ product }) => {
             localStorage.setItem('cart', JSON.stringify([]));
         }
 
-        const cart = JSON.parse(localStorage.getItem('cart'));
 
         product.quantity = 1;
 
