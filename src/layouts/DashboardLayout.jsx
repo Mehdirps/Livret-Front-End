@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { clearUser } from '../stores/slices/userSlice';
+import { clearUser, setUser } from '../stores/slices/userSlice';
 import Sidebar from '../components/dashboard/Sidebar';
 import Error from '../components/Error';
 import Success from '../components/Success';
@@ -40,6 +40,8 @@ const DashboardLayout = () => {
                         localStorage.setItem('openLogin', true);
                         navigate('/connexion');
                     }else{
+                        dispatch(setUser({ user: data.user, token: token }));
+                        
                         fetch(`${process.env.REACT_APP_API_URL}dashboard`, {
                             method: 'GET',
                             headers: {
