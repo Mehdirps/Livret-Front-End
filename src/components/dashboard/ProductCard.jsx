@@ -6,7 +6,7 @@ import { setCart } from '../../stores/slices/cartSlice';
 const ProductCard = ({ product }) => {
 
     const cart = useSelector(state => state.cart.cart);
-    
+
     const dispatch = useDispatch();
 
     const addToCart = (product) => {
@@ -14,17 +14,23 @@ const ProductCard = ({ product }) => {
             localStorage.setItem('cart', JSON.stringify([]));
         }
 
+        const newCart = [...cart];
 
-        product.quantity = 1;
+        const existingProductIndex = newCart.findIndex(p => p.id === product.id);
 
-        if (cart.find(p => p.id === product.id)) {
-            cart.find(p => p.id === product.id).quantity++;
+        if (existingProductIndex !== -1) {
+            const updatedProduct = { ...newCart[existingProductIndex] };
+            updatedProduct.quantity += 1;
+
+            newCart[existingProductIndex] = updatedProduct;
         } else {
-            cart.push(product);
+            const productToAdd = { ...product, quantity: 1 };
+            newCart.push(productToAdd);
         }
 
-        dispatch(setCart({ cart: cart }));
-    }
+        dispatch(setCart({ cart: newCart }));
+    };
+
 
     return (
         <div className="col-md-4 col-6">
