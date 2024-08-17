@@ -26,7 +26,7 @@ const SuggestionStatusToggle = ({livret}) => {
 
     return (
         <div>
-            {!livret.suggest ? (
+            { livret && !livret.suggest ? (
                 <div>
                     <div className="alert alert-warning" role="alert">
                         Les suggestions ne sont pas activées sur votre livret
