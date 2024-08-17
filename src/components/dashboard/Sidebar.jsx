@@ -3,13 +3,14 @@ import { Link, NavLink } from 'react-router-dom';
 import LogoutButton from "../auth/LogoutButton";
 import { useSelector } from "react-redux";
 import SupportContact from './SupportContact';
+import Cart from './Cart';
 
 const Sidebar = () => {
 
     const livret = useSelector(state => state.livret.livret)
 
     return (
-        <div className="d-flex flex-column p-3 text-white bg-dark sidebar" style={{zIndex: 1050}}>
+        <div className="d-flex flex-column p-3 text-white bg-dark sidebar" style={{ zIndex: 1050 }}>
             <NavLink to="/dashboard" className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                 <span className="fs-4">Dashboard</span>
             </NavLink>
@@ -64,6 +65,8 @@ const Sidebar = () => {
                     <LogoutButton />
                 </li>
             </ul>
+            <hr />
+            <Cart />
             <hr />
             <SupportContact />
             <button type="button" className="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#shareModal">
