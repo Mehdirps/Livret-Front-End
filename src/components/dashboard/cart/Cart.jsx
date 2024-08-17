@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
+import RemoveProduct from './RemoveProduct';
 
 const Cart = () => {
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')) || []);
 
     const calculateTotal = () => {
         return cart.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2);
@@ -44,9 +45,7 @@ const Cart = () => {
                                                         {(product.price * product.quantity).toFixed(2)}€
                                                     </span>
                                                     <input style={{width:'70px'}} className='form-control' type="number" name="" id="" defaultValue={product.quantity} />
-                                                    <p className='btn btn-danger'>
-                                                        <i className="bi bi-trash"></i>
-                                                    </p>
+                                                    <RemoveProduct productId={product.id} setCart={setCart} />
                                                 </div>
                                             </li>
                                         ))}
