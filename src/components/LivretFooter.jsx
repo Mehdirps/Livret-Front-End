@@ -1,19 +1,11 @@
 import React from 'react';
+import LivretSuggestionForm from './LivretSuggestionForm';
 
 const LivretFooter = ({ livret }) => {
     return (
         <footer className="container mb-5">
             {livret.suggest && (
-                <div className="row">
-                    <button
-                        type="button"
-                        className="btn btn-primary col-3 mx-auto mb-5"
-                        data-bs-toggle="modal"
-                        data-bs-target="#suggestionModal"
-                    >
-                        Envoyer une suggestion
-                    </button>
-                </div>
+                <LivretSuggestionForm livretId={livret.id} />
             )}
             <div className="row socials d-flex flex-row justify-content-center">
                 {livret.establishmentWebsite && (
