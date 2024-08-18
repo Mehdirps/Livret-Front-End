@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
-import { setError, setSuccess } from '../../../redux/actions';
+import { setError, setSuccess } from '../../../stores/slices/livretSlice';
+import { clearCart } from '../../../stores/slices/cartSlice';
 
 const CheckoutForm = ({ amount }) => {
+
+    const user = useSelector(state => state.user.user);
+    const cart = useSelector(state => state.cart.cart);
+
     const stripe = useStripe();
     const elements = useElements();
 
@@ -41,6 +46,35 @@ const CheckoutForm = ({ amount }) => {
                 dispatch(setError({ error: error.message }));
             } else if (paymentIntent.status === 'succeeded') {
                 dispatch(setSuccess({ success: 'Paiement réussi avec succès !' }));
+                dispatch(clearCart());
+                document.getElementById('paiementsModal').classList.remove('show');
+
+                const orderDetails = {
+                    orderId: paymentIntent.id,
+                    user: {
+                        name: user.name,
+                        email: user.email,
+                        address: user.address,
+                        phone: user.phone,
+                    },
+                    cart: cart,
+                    totalAmount: amount,
+                };
+
+                const response = await fetch(process.env.REACT_APP_API_URL + 'send-confirmation-email', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(orderDetails),
+                });
+
+                if (response.error) {
+                    console.log('Erreur lors de l\'envoi de l\'email de confirmation.');
+                    
+                }else{
+                    console.log('Email de confirmation envoyé avec succès !');
+                }
             }
         } catch (error) {
             dispatch(setError({ error: error.message }));
