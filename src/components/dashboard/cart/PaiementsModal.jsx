@@ -1,13 +1,9 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-const PaiementsModal = () => {
+const PaiementsModal = ({calculateTotal}) => {
     const cart = useSelector(state => state.cart.cart);
     const user = useSelector(state => state.user.user);
-
-    const calculateTotal = () => {
-        return cart.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2);
-    };
 
     return (
         <div className="modal fade text-dark" id="paiementsModal" tabIndex="-1" aria-labelledby="paiementsModalLabel" aria-hidden="true">

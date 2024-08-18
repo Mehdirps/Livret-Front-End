@@ -4,12 +4,10 @@ import RemoveProduct from './RemoveProduct';
 import ChangeProductQuantity from './ChangeProductQuantity';
 
 
-const CartModal = () => {
+const CartModal = ({calculateTotal}) => {
     const cart = useSelector(state => state.cart.cart);
 
-    const calculateTotal = () => {
-        return cart.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2);
-    };
+   
 
     return (
         <div className="modal fade text-dark" id="cartModal" tabIndex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
