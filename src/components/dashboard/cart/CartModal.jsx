@@ -59,9 +59,13 @@ const CartModal = () => {
                         <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">
                             Fermer
                         </button>
-                        <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#paiementsModal">
-                            Passer à la caisse
-                        </button>
+                        {
+                            cart.length > 0 && (
+                                <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#paiementsModal">
+                                    Passer à la caisse
+                                </button>
+                            )
+                        }
                     </div>
                 </div>
             </div>
