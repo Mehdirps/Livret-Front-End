@@ -26,6 +26,9 @@ const PaiementsModal = ({calculateTotal}) => {
                                 <li className="list-group-item">
                                     <strong>Téléphone :</strong> {user?.phone || 'Non renseigné'}
                                 </li>
+                                <li className="list-group-item">
+                                    <strong>Email :</strong> {user?.email || 'Non renseigné'}
+                                </li>
                             </ul>
                         </div>
                         <div className="mb-4">
