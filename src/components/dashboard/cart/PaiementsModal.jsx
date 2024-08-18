@@ -1,7 +1,12 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { loadStripe } from '@stripe/stripe-js';
+import { Elements } from '@stripe/react-stripe-js';
+import CheckoutForm from './CheckoutForm';
 
-const PaiementsModal = ({calculateTotal}) => {
+const stripePromise = loadStripe('pk_test_51PpBnpIXFdsl2Ez7ChX5PyzWowJXyUtPm7xIgF6yesuJS1MwGVgMyzeVHIdW7tkALTce6TwGX1MG48BMqWwtDHHJ00TouExlWZ');
+
+const PaiementsModal = ({ calculateTotal }) => {
     const cart = useSelector(state => state.cart.cart);
     const user = useSelector(state => state.user.user);
 
@@ -61,7 +66,9 @@ const PaiementsModal = ({calculateTotal}) => {
                         <div className="mb-4">
                             <h6>Détails du paiement :</h6>
                             <div className="card p-3">
-                                <p>Intégration Stripe</p>
+                                <Elements stripe={stripePromise}>
+                                    <CheckoutForm amount={calculateTotal()} />
+                                </Elements>
                             </div>
                         </div>
                     </div>
@@ -71,9 +78,6 @@ const PaiementsModal = ({calculateTotal}) => {
                         </button>
                         <button type="button" className="btn btn-danger" data-bs-toggle="modal" data-bs-target="#cartModal">
                             Revenir en arrière
-                        </button>
-                        <button type="button" className="btn btn-primary">
-                            Payer {calculateTotal()} €
                         </button>
                     </div>
                 </div>
