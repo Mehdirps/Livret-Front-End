@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
+import { setError, setSuccess } from '../../../redux/actions';
 
 const CheckoutForm = ({ amount }) => {
     const stripe = useStripe();
     const elements = useElements();
-    const [errorMessage, setErrorMessage] = useState('');
-    const [success, setSuccess] = useState(false);
+
+    const dispatch = useDispatch();
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -36,12 +38,12 @@ const CheckoutForm = ({ amount }) => {
             });
 
             if (error) {
-                setErrorMessage(error.message);
+                dispatch(setError({ error: error.message }));
             } else if (paymentIntent.status === 'succeeded') {
-                setSuccess(true);
+                dispatch(setSuccess({ success: 'Paiement réussi avec succès !' }));
             }
         } catch (error) {
-            setErrorMessage('Une erreur s\'est produite.');
+            dispatch(setError({ error: error.message }));
         }
 
     };
@@ -52,8 +54,6 @@ const CheckoutForm = ({ amount }) => {
             <button type="submit" disabled={!stripe} className="btn btn-primary mt-3">
                 Payer {amount} €
             </button>
-            {errorMessage && <div className="text-danger mt-3">{errorMessage}</div>}
-            {success && <div className="text-success mt-3">Paiement réussi !</div>}
         </form>
     );
 };
