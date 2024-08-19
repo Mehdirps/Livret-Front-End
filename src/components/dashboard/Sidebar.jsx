@@ -62,6 +62,12 @@ const Sidebar = () => {
                     </NavLink>
                 </li>
                 <li>
+                    <NavLink to="/dashboard/orders" className="nav-link text-white">
+                        <i class="bi bi-cart-check"></i> Mes commandes
+                    </NavLink>
+                </li>
+                <hr />
+                <li>
                     <LogoutButton />
                 </li>
             </ul>
