@@ -13,6 +13,7 @@ import Stats from "../../pages/dashboard/Stats";
 import Suggest from "../../pages/dashboard/Suggest";
 import Inventories from '../../pages/dashboard/Inventories';
 import Shop from '../../pages/dashboard/Shop';
+import Order from '../../pages/dashboard/Order';
 
 const Index = () => {
     return (
@@ -32,6 +33,7 @@ const Index = () => {
                     <Route path={'suggestions'} element={<Suggest />} />
                     <Route path={'inventories'} element={<Inventories />} />
                     <Route path={'shop'} element={<Shop />} />
+                    <Route path={'orders'} element={<Order />} />
                 </Route>
             </Routes>
         </BrowserRouter>
