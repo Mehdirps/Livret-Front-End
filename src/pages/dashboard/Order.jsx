@@ -26,6 +26,7 @@ const Order = () => {
     return (
         <div className="container mt-5">
             <h1>Liste des Commandes</h1>
+            <OrdersTable orders={orders} />
         </div>
     );
 };
