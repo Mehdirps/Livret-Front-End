@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import OrdersTable from '../../components/dashboard/shop/OrdersTable';
+import Loading from '../../components/Loading';
 
 const Order = () => {
     const token = useSelector(state => state.user.token);
-    const [orders, setOrders] = useState([]);
+    const [orders, setOrders] = useState(null);
 
     useEffect(() => {
         fetch(process.env.REACT_APP_API_URL + 'dashboard/userOrders', {
@@ -24,6 +25,12 @@ const Order = () => {
                 console.error('Error:', error);
             });
     }, [token]);
+
+    if (!orders) {
+        return (
+            <Loading />
+        );
+    }
 
     return (
         <div className="container mt-5">

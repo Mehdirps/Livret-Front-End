@@ -6,7 +6,7 @@ import Loading from "../../components/Loading";
 const Background = () => {
     const livret = useSelector(state => state.livret.livret);
     const token = useSelector(state => state.user.token);
-    const [backgroundGroups, setBackgroundGroups] = useState([])
+    const [backgroundGroups, setBackgroundGroups] = useState(null)
     const [selectedGroupId, setSelectedGroupId] = useState(1);
 
     const dispatch = useDispatch();
@@ -54,7 +54,7 @@ const Background = () => {
             );
     }
 
-    if (backgroundGroups.length === 0) {
+    if (!backgroundGroups) {
         return (
             <Loading />
         );

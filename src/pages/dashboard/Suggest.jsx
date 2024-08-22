@@ -7,13 +7,14 @@ import SuggestionTable from "../../components/dashboard/suggestions/SuggestionTa
 import SuggestionStats from "../../components/dashboard/suggestions/SuggestionStats";
 import SuggestionsSearch from "../../components/dashboard/suggestions/SuggestionsSearch";
 import { setError } from '../../stores/slices/livretSlice';
+import Loading from "../../components/Loading";
 
 
 const Suggest = () => {
     const token = useSelector(state => state.user.token);
     const livret = useSelector(state => state.livret.livret);
 
-    const [suggestions, setSuggestions] = useState([]);
+    const [suggestions, setSuggestions] = useState(null);
     const [suggestionsToFiltered, setSuggestionsToFiltered] = useState([]);
 
     const [suggestionStats, setSuggestionStats] = useState({ accepted: 0, refused: 0, pending: 0 });
@@ -42,6 +43,12 @@ const Suggest = () => {
             })
             .catch(error => dispatch(setError({ error: error })));
     }, [token,requestSuccess]);
+
+    if(!suggestions) {
+        return (
+            <Loading />
+        );
+    }
 
     return (
         <div className="container">

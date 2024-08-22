@@ -7,6 +7,12 @@ import LivretProfileForm from "../../components/dashboard/profile/LivretProfileF
 const Profile = () => {
     const user = useSelector(state => state.user.user);
 
+    if(!user.name) {
+        return (
+            <Loading />
+        );
+    }
+
     return (
         <div className="container">
             <div className="row">

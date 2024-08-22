@@ -6,10 +6,11 @@ import InventoriesFilter from '../../components/dashboard/inventories/Inventorie
 import InventoriesExportPDF from '../../components/dashboard/inventories/InventoriesExportPDF';
 import { setError } from '../../stores/slices/livretSlice';
 import InventoryAddForm from '../../components/dashboard/inventories/InventoryAddForm';
+import Loading from '../../components/Loading';
 
 const Inventories = () => {
     const token = useSelector(state => state.user.token);
-    const [inventories, setInventories] = useState([]);
+    const [inventories, setInventories] = useState(null);
     const [filteredInventories, setFilteredInventories] = useState([]);
 
     const dispatch = useDispatch();
@@ -29,6 +30,12 @@ const Inventories = () => {
             })
             .catch(err => dispatch(setError({ error: err })));
     }, [token]);
+
+    if(!inventories) {
+        return (
+            <Loading />
+        );
+    }
 
 
     return (

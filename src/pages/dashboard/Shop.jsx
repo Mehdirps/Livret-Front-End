@@ -6,7 +6,7 @@ import Loading from '../../components/Loading';
 
 const Shop = () => {
     const token = useSelector(state => state.user.token);
-    const [categories, setCategories] = useState([]);
+    const [categories, setCategories] = useState(null);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -26,7 +26,7 @@ const Shop = () => {
             });
     }, [token, dispatch]);
 
-    if(categories.length === 0) {
+    if(!categories) {
         return (
             <Loading />
         );
