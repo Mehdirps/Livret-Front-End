@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import OrdersTable from '../../components/dashboard/OrdersTable';
+import OrdersTable from '../../components/dashboard/shop/OrdersTable';
 
 const Order = () => {
     const token = useSelector(state => state.user.token);

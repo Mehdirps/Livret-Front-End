@@ -3,7 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 import LogoutButton from "../auth/LogoutButton";
 import { useSelector } from "react-redux";
 import SupportContact from './SupportContact';
-import Cart from './cart/Cart';
+import Cart from './shop/cart/Cart';
 
 const Sidebar = () => {
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setError } from '../../stores/slices/livretSlice';
-import ProductCard from '../../components/dashboard/ProductCard';
+import ProductCard from '../../components/dashboard/shop/ProductCard';
 import Loading from '../../components/Loading';
 
 const Shop = () => {

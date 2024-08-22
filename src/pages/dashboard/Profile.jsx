@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSelector } from "react-redux";
 import Loading from "../../components/Loading";
-import UserProfileForm from "../../components/dashboard/UserProfileForm";
-import LivretProfileForm from "../../components/dashboard/LivretProfileForm";
+import UserProfileForm from "../../components/dashboard/profile/UserProfileForm";
+import LivretProfileForm from "../../components/dashboard/profile/LivretProfileForm";
 
 const Profile = () => {
     const user = useSelector(state => state.user.user);

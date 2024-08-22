@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
-import { setError, setSuccess } from '../../../stores/slices/livretSlice';
-import { clearCart } from '../../../stores/slices/cartSlice';
+import { setError, setSuccess } from '../../../../stores/slices/livretSlice';
+import { clearCart } from '../../../../stores/slices/cartSlice';
 
 const CheckoutForm = ({ amount }) => {
 

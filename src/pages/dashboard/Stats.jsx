@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import {useSelector, useDispatch} from "react-redux";
 import Loading from "../../components/Loading";
-import StatsCard from "../../components/dashboard/StatsCard";
-import StatsBetweenDatesForm from "../../components/dashboard/StatsBetweenDatesForm";
-import ExportStats from "../../components/dashboard/ExportStats";
+import StatsCard from "../../components/dashboard/stats/StatsCard";
+import StatsBetweenDatesForm from "../../components/dashboard/stats/StatsBetweenDatesForm";
+import ExportStats from "../../components/dashboard/stats/ExportStats";
 import { setError } from '../../stores/slices/livretSlice';
 
 const Stats = () => {

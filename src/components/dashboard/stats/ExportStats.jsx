@@ -2,7 +2,7 @@ import React from 'react';
 import jsPDF from "jspdf";
 import "jspdf-autotable";
 import {useSelector, useDispatch} from "react-redux";
-import {setSuccess} from "../../stores/slices/livretSlice";
+import {setSuccess} from "../../../stores/slices/livretSlice";
 
 const ExportStats = ({ data }) => {
     const dispatch = useDispatch();
