@@ -1,7 +1,8 @@
 import React from 'react';
 
 const OrdersTable = ({ orders }) => {
-
+    console.log(orders.length);
+    
     return (
         <div className="table-responsive">
             <table className="table table-striped">
@@ -14,26 +15,28 @@ const OrdersTable = ({ orders }) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {orders?.length === 0 ? (
-                        <tr>
-                            <td colSpan="5" className="text-center">Aucune commande trouvée</td>
-                        </tr>
-                    ) : (
-                        orders.map(order => (
-                            <tr key={order.id}>
-                                <td>{order.order_id}</td>
-                                <td>{order.total_price} €</td>
-                                <td>
-                                    <ul>
-                                        {JSON.parse(order.product_ids).map((productId, index) => (
-                                            <li key={index}>Produit ID: {productId}</li>
-                                        ))}
-                                    </ul>
-                                </td>
-                                <td>{new Date(order.created_at).toLocaleString()}</td>
+                    {
+                        !orders || orders.length <= 0 ? (
+                            <tr>
+                                <td colSpan="5" className="text-center">Aucune commande trouvée</td>
                             </tr>
-                        ))
-                    )}
+                        ) : (
+                            orders.map(order => (
+                                <tr key={order.id}>
+                                    <td>{order.order_id}</td>
+                                    <td>{order.total_price} €</td>
+                                    <td>
+                                        <ul>
+                                            {JSON.parse(order.product_ids).map((productId, index) => (
+                                                <li key={index}>Produit ID: {productId}</li>
+                                            ))}
+                                        </ul>
+                                    </td>
+                                    <td>{new Date(order.created_at).toLocaleString()}</td>
+                                </tr>
+                            ))
+                        )
+                    }
                 </tbody>
             </table>
         </div>

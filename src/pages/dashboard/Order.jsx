@@ -16,7 +16,9 @@ const Order = () => {
         })
             .then(response => response.json())
             .then(data => {
-                setOrders(data.orders);
+                if (!data.error) {
+                    setOrders(data.orders);
+                }
             })
             .catch(error => {
                 console.error('Error:', error);
