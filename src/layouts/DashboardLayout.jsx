@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { clearUser, setUser } from '../stores/slices/userSlice';
@@ -39,9 +39,9 @@ const DashboardLayout = () => {
                         dispatch(clearLivret());
                         localStorage.setItem('openLogin', true);
                         navigate('/connexion');
-                    }else{
+                    } else {
                         dispatch(setUser({ user: data.user, token: token }));
-                        
+
                         fetch(`${process.env.REACT_APP_API_URL}dashboard`, {
                             method: 'GET',
                             headers: {
@@ -50,7 +50,7 @@ const DashboardLayout = () => {
                             },
                         }).then(response => response.json())
                             .then(data => {
-                                dispatch(setLivret({livret: data.livret}));
+                                dispatch(setLivret({ livret: data.livret }));
                             })
                             .catch((error) => {
                                 dispatch(setError({ error: error }));
@@ -67,23 +67,30 @@ const DashboardLayout = () => {
         }, 5000);
     }, [error, success, dispatch]);
 
+
+    const [isSidebarVisible, setIsSidebarVisible] = useState(false);
+
+    const toggleSidebar = () => {
+        setIsSidebarVisible(!isSidebarVisible);
+    };
+
     return (
-        <div className="row" style={{ minHeight: '100vh', maxWidth: '100vw' }}>
-            <div className="col-md-3 col-12">
-                <Sidebar />
+        <div className="row container" style={{ minHeight: '100vh', maxWidth: '100vw', marginTop: '50px'}}>
+            <button
+                className="btn btn-dark d-md-none"
+                onClick={toggleSidebar}
+                style={{ position: 'fixed', top: 10, left: 10, zIndex: 1060, width: '40px', height: '40px' }}
+            >
+                <i className="bi bi-list"></i>
+            </button>
+
+            <div className={`col-md-3 col-12 ${isSidebarVisible ? 'd-block' : 'd-none'} d-md-block`}>
+                <Sidebar toggleSidebar={toggleSidebar} />
             </div>
-            <div className="col-md-9 col-10">
+            <div className="col-md-9 col-12">
                 <main>
-                    {
-                        error && (
-                            <Error error={error} />
-                        )
-                    }
-                    {
-                        success && (
-                            <Success success={success} />
-                        )
-                    }
+                    {error && <Error error={error} />}
+                    {success && <Success success={success} />}
                     <Outlet />
                 </main>
             </div>
