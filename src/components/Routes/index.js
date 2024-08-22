@@ -14,6 +14,7 @@ import Suggest from "../../pages/dashboard/Suggest";
 import Inventories from '../../pages/dashboard/Inventories';
 import Shop from '../../pages/dashboard/Shop';
 import Order from '../../pages/dashboard/Order';
+import EditLivret from '../../pages/dashboard/EditLivret';
 
 const Index = () => {
     return (
@@ -34,6 +35,7 @@ const Index = () => {
                     <Route path={'inventories'} element={<Inventories />} />
                     <Route path={'shop'} element={<Shop />} />
                     <Route path={'orders'} element={<Order />} />
+                    <Route path={'edit_livret'} element={<EditLivret />} />
                 </Route>
             </Routes>
         </BrowserRouter>
