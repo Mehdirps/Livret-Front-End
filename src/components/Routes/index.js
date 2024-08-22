@@ -24,8 +24,8 @@ const Index = () => {
                     <Route index element={<Welcome />} />
                     <Route path={'/connexion'} element={<Authentification />} />
                 </Route>
+                <Route path={'premiere_connexion'} element={<FirstLogin />} />
                 <Route path={'/dashboard'} element={<DashboardLayout />}>
-                    <Route path={'premiere_connexion'} element={<FirstLogin />} />
                     <Route index element={<DashboardIndex />} />
                     <Route path={'profil'} element={<Profile />} />
                     <Route path={'background'} element={<Background />} />

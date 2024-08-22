@@ -43,11 +43,11 @@ const LoginForm = ({setOpenLogin}) => {
                     dispatch(clearLivret());
                     return;
                 } else {
-                    dispatch(setUser({user: data.user, token: data.token}));
+                    dispatch(setUser({user: data.user, token: data.token, first_login: data.first_login}));
                     dispatch(setLivret({livret: data.livret}));
 
                     if (data.first_login) {
-                        navigate('/dashboard/premiere_connexion');
+                        navigate('/premiere_connexion');
                     } else {
                         navigate('/dashboard');
                     }
