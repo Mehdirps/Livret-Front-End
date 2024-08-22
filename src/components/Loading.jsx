@@ -2,9 +2,11 @@ import React from 'react';
 
 const Loading = () => {
     return (
-        <div className="text-center">
-            <div className="spinner-border" role="status">
-                <span className="sr-only"></span>
+        <div className="loading-container">
+            <div className="loading-animation">
+                <div className="loading-spinner"></div>
+                <div className="loading-text">Chargement...</div>
+                <div className="loading-subtext">Merci de patienter un instant</div>
             </div>
         </div>
     );
