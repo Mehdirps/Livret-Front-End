@@ -7,7 +7,7 @@ import LivretProfileForm from "../../components/dashboard/profile/LivretProfileF
 const Profile = () => {
     const user = useSelector(state => state.user.user);
 
-    if(!user.name) {
+    if(!user) {
         return (
             <Loading />
         );
