@@ -1,7 +1,6 @@
 import React from 'react';
 
 const OrdersTable = ({ orders }) => {
-    console.log(orders.length);
     
     return (
         <div className="table-responsive">
