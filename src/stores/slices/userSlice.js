@@ -4,7 +4,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
     user: null,
     token: sessionStorage.getItem('token') || null,
-    first_login: sessionStorage.getItem('token') || null,
+    first_login: sessionStorage.getItem('first_login') || null,
 };
 
 const userSlice = createSlice({
