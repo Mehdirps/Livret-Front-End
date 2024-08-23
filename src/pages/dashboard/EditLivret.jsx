@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Loading from '../../components/Loading';
 import { setError } from '../../stores/slices/livretSlice';
 import ModuleCard from '../../components/dashboard/modules/ModuleCard';
+import UpdatetextStyle from '../../components/dashboard/UpdatetextStyle';
 
 const EditLivret = () => {
 
@@ -34,7 +35,7 @@ const EditLivret = () => {
         });
     }, []);
 
-    if (!modules) {
+    if (!modules || !livret) {
         return (
             <Loading />
         );
@@ -48,15 +49,13 @@ const EditLivret = () => {
                     <button type="button" className="btn btn-primary col-md-3" data-bs-toggle="modal" data-bs-target="#modulesOrderModal">
                         Changer l'ordre des modules
                     </button>
-                    <button type="button" className="btn btn-secondary col-md-3" data-bs-toggle="modal" data-bs-target="#textDesignModal">
-                        Changer le design des textes
-                    </button>
+                    <UpdatetextStyle />
                 </div>
                 <div className="row d-flex gap-3 justify-content-center">
                     {
                         modules.map((module) => {
                             return (
-                                <ModuleCard key={module.type.name} name={module.type.name} icon={module.icon} title={module.type.title} data={module.data}/>
+                                <ModuleCard key={module.type.name} name={module.type.name} icon={module.icon} title={module.type.title} data={module.data} />
                             );
                         })
                     }
