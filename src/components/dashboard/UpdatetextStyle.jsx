@@ -1,9 +1,41 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { setError, setSuccess } from '../../stores/slices/livretSlice';
 
 const UpdatetextStyle = () => {
     const livret = useSelector(state => state.livret.livret);
-    
+    const token = useSelector(state => state.user.token);
+
+    const [fontColor, setFontColor] = useState(livret.text_color);
+    const [fontFamily, setFontFamily] = useState(livret.font);
+
+    const dispatch = useDispatch();
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        fetch(process.env.REACT_APP_API_URL + 'dashboard/update-text-design', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
+            },
+            body: JSON.stringify({
+                fontColor,
+                fontFamily
+            })
+        }).then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    dispatch(setError({ error: data.error }));
+                } else {
+                    dispatch(setSuccess({ success: data.message }));
+                }
+            }).catch(error => {
+                dispatch(setError({ error: error }));
+            });
+    }
+
     return (
         <>
             <button type="button" className="btn btn-secondary col-md-3" data-bs-toggle="modal" data-bs-target="#textDesignModal">
@@ -17,7 +49,7 @@ const UpdatetextStyle = () => {
                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div className="modal-body">
-                            <form>
+                            <form onSubmit={(e) => handleSubmit(e)}>
                                 <div className="mb-3">
                                     <label htmlFor="fontColor" className="form-label">Couleur du texte</label>
                                     <input
@@ -26,6 +58,7 @@ const UpdatetextStyle = () => {
                                         id="fontColor"
                                         name="fontColor"
                                         defaultValue={livret.text_color}
+                                        onChange={(e) => setFontColor(e.target.value)}
                                     />
                                 </div>
 
@@ -36,6 +69,7 @@ const UpdatetextStyle = () => {
                                         id="fontFamily"
                                         name="fontFamily"
                                         defaultValue={livret.font}
+                                        onChange={(e) => setFontFamily(e.target.value)}
                                     >
                                         <option style={{ fontFamily: 'Roboto, sans-serif' }} value="Roboto">Roboto</option>
                                         <option style={{ fontFamily: 'Open Sans, sans-serif' }} value="Open Sans">Open Sans</option>
