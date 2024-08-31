@@ -41,7 +41,9 @@ const Livret = () => {
             height: "100vh",
             backgroundImage: `url(${process.env.REACT_APP_URL}${livret.background})`,
             backgroundRepeat: "no-repeat",
-            backgroundSize: "cover"
+            backgroundSize: "cover",
+            color: livret.text_color,
+            fontFamily: livret.font
         }}>
             <main>
                 <div className="container py-5 text-center">
