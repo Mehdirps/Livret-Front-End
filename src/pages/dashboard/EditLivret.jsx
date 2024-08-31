@@ -53,11 +53,13 @@ const EditLivret = () => {
                 </div>
                 <div className="row d-flex gap-3 justify-content-center">
                     {
-                        modules.map((module) => {
-                            return (
-                                <ModuleCard key={module.type.name} module={module}/>
-                            );
-                        })
+                        modules
+                            .sort((a, b) => a.order - b.order)
+                            .map((module) => {
+                                return (
+                                    <ModuleCard key={module.type.name} module={module} />
+                                );
+                            })
                     }
                 </div>
             </div>

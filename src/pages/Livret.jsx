@@ -14,11 +14,11 @@ import LivretFooter from '../components/LivretFooter';
 import Error from '../components/Error';
 import Success from '../components/Success';
 
-
 const Livret = () => {
     const { slug, id } = useParams();
     const [livret, setLivret] = useState(null);
-    const [modules, setModules] = useState(null);
+    const [modules, setModules] = useState([]);
+    const [homeInfos, setHomeInfos] = useState(null);
 
     const error = useSelector(state => state.livret.error);
     const success = useSelector(state => state.livret.success);
@@ -28,7 +28,20 @@ const Livret = () => {
             .then(response => response.json())
             .then(data => {
                 setLivret(data.livret);
-                setModules(data.modules);
+
+                const dataModules = data.modules;
+                setModules([
+                    { data: dataModules.wifi.data, component: <ModuleWifi data={dataModules.wifi.data} />, order: dataModules.wifi.order },
+                    { data: dataModules.digicode.data, component: <ModuleDigicode data={dataModules.digicode.data} />, order: dataModules.digicode.order },
+                    { data: dataModules.endInfos.data, component: <ModuleEndInfos data={dataModules.endInfos.data} />, order: dataModules.endInfos.order },
+                    { data: dataModules.utilsPhone.data, component: <ModuleUtilsPhone data={dataModules.utilsPhone.data} />, order: dataModules.utilsPhone.order },
+                    { data: dataModules.startInfos.data, component: <ModuleStartInfos data={dataModules.startInfos.data} />, order: dataModules.startInfos.order },
+                    { data: dataModules.utilsInfos.data, component: <ModuleUtilsInfos data={dataModules.utilsInfos.data} />, order: dataModules.utilsInfos.order },
+                    {
+                        data: dataModules.NearbyPlaces.data, component: <ModuleNearbyPlaces data={dataModules.NearbyPlaces.data} dataPlaces={dataModules.placeGroups.data} />, order: dataModules.NearbyPlaces.order
+                    }
+                ]);
+                setHomeInfos(dataModules.homeInfos.data);
             });
     }, [slug, id]);
 
@@ -60,29 +73,27 @@ const Livret = () => {
                         </div>
                     </div>
                     <div className="row modules">
-                        {modules.wifi.length > 0 && <ModuleWifi data={modules.wifi} />}
-                        {modules.digicode.length > 0 && <ModuleDigicode data={modules.digicode} />}
-                        {modules.endInfos.length > 0 && <ModuleEndInfos data={modules.endInfos} />}
-                        {modules.utilsPhone.length > 0 && <ModuleUtilsPhone data={modules.utilsPhone} />}
-                        {modules.startInfos.length > 0 && <ModuleStartInfos data={modules.startInfos} />}
-                        {modules.utilsInfos.length > 0 && <ModuleUtilsInfos data={modules.utilsInfos} />}
-                        {modules.NearbyPlaces.length > 0 &&
-                            <ModuleNearbyPlaces data={modules.NearbyPlaces} dataPlaces={modules.placeGroups} />}
+                        {
+                            modules
+                                .filter(module => module.data && module.data.length > 0)
+                                .sort((a, b) => a.order - b.order)
+                                .map(module => module.component)
+                        }
                     </div>
-                    <HomeInfosModal livret={livret} homeInfos={modules.homeInfos} />
+                    <HomeInfosModal livret={livret} homeInfos={homeInfos} />
                 </div>
             </main>
             <LivretFooter livret={livret} />
             {
-                        error && (
-                            <Error error={error} />
-                        )
-                    }
-                    {
-                        success && (
-                            <Success success={success} />
-                        )
-                    }
+                error && (
+                    <Error error={error} />
+                )
+            }
+            {
+                success && (
+                    <Success success={success} />
+                )
+            }
         </div>
     );
 };
