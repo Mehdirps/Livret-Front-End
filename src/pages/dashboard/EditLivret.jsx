@@ -55,7 +55,7 @@ const EditLivret = () => {
                     {
                         modules.map((module) => {
                             return (
-                                <ModuleCard key={module.type.name} name={module.type.name} icon={module.icon} title={module.type.title} data={module.data} />
+                                <ModuleCard key={module.type.name} module={module}/>
                             );
                         })
                     }
