@@ -4,6 +4,7 @@ import Loading from '../../components/Loading';
 import { setError } from '../../stores/slices/livretSlice';
 import ModuleCard from '../../components/dashboard/modules/ModuleCard';
 import UpdatetextStyle from '../../components/dashboard/UpdatetextStyle';
+import ChangeModulesOrders from '../../components/dashboard/modules/ChangeModulesOrders';
 
 const EditLivret = () => {
 
@@ -46,9 +47,7 @@ const EditLivret = () => {
             <h1 className='text-center'>Editer le livret - <strong>{livret?.livret_name}</strong></h1>
             <div className="row container">
                 <div className="col-12 row d-flex justify-content-center mt-5 mb-5 gap-3">
-                    <button type="button" className="btn btn-primary col-md-3" data-bs-toggle="modal" data-bs-target="#modulesOrderModal">
-                        Changer l'ordre des modules
-                    </button>
+                    <ChangeModulesOrders modules={modules} />
                     <UpdatetextStyle />
                 </div>
                 <div className="row d-flex gap-3 justify-content-center">
