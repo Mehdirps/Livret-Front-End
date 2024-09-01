@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setError, setSuccess } from '../../stores/slices/livretSlice';
+import { setLivret } from '../../stores/slices/livretSlice';
 
 const UpdatetextStyle = () => {
     const livret = useSelector(state => state.livret.livret);
@@ -34,6 +35,7 @@ const UpdatetextStyle = () => {
                 } else {
                     dispatch(setSuccess({ success: data.message }));
                     setRequestResponse(true);
+                    dispatch(setLivret({ livret: data.livret }));
                 }
                 setTimeout(() => {
                     setRequestResponse(false);
