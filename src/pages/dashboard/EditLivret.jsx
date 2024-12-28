@@ -14,6 +14,9 @@ const EditLivret = () => {
 
     const [modules, setModules] = useState(null);
 
+    const success = useSelector((state) => state.livret.success);
+    const error = useSelector((state) => state.livret.error);
+
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -34,7 +37,7 @@ const EditLivret = () => {
         }).catch((error) => {
             dispatch(setError({ error: error }));
         });
-    }, []);
+    }, [success, error]);
 
     if (!modules || !livret) {
         return (
