@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {setError, setSuccess} from '../../../../stores/slices/livretSlice';
+import DeleteModule from "../DeleteModule";
 
 const ModuleWifi = ({data}) => {
 
@@ -9,29 +10,6 @@ const ModuleWifi = ({data}) => {
 
     const [wifiName, setWifiName] = useState("");
     const [wifiPassword, setWifiPassword] = useState("");
-    const deleteWifi = (id) => {
-        if (!window.confirm('Voulez-vous vraiment supprimer ce WiFi ?')) {
-            return;
-        }
-
-        fetch(process.env.REACT_APP_API_URL + 'dashboard/module/wifi/' + id, {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + token
-            }
-        }).then((response) => {
-            return response.json();
-        }).then((data) => {
-            if (data.error) {
-                dispatch(setError({error: data.error}));
-            } else {
-                dispatch(setSuccess({success: data.message}));
-            }
-        }).catch((error) => {
-            dispatch(setError({error: error}));
-        });
-    }
 
     const addModuleWifi = (e) => {
         e.preventDefault();
@@ -70,33 +48,32 @@ const ModuleWifi = ({data}) => {
                 <div class="modal-content">
                     <div class="modal-header">
                         {
-                            data.length > 0 &&
-                            <table class="table table-striped">
-                                <thead>
-                                <tr>
-                                    <th>Nom</th>
-                                    <th>Code</th>
-                                    <th>Actions</th>
-                                </tr>
-                                </thead>
-                                <tbody>
+                            data.length > 0 ?
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>Nom</th>
+                                        <th>Code</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
 
-                                {
-                                    data.map((item, index) => (
-                                        <tr key={index}>
-                                            <td>{item.ssid}</td>
-                                            <td>{item.password}</td>
-                                            <td>
-                                                <button type="submit" class="btn btn-danger"
-                                                        onClick={() => deleteWifi(item.id)}>Supprimer
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    ))
-                                }
+                                    {
+                                        data.map((item, index) => (
+                                            <tr key={index}>
+                                                <td>{item.ssid}</td>
+                                                <td>{item.password}</td>
+                                                <td>
+                                                    <DeleteModule module="wifi" id={item.id}/>
+                                                </td>
+                                            </tr>
+                                        ))
+                                    }
 
-                                </tbody>
-                            </table>
+                                    </tbody>
+                                </table>
+                                : <p>Aucun WiFi</p>
                         }
                     </div>
                     <div class="modal-dialog">

@@ -8,7 +8,7 @@ const Error = ({ error }) => {
         <>
             {
                 show &&
-                <div className="modal d-block" role="dialog" style={{ display: 'block' }}>
+                <div className="modal d-block" role="dialog" style={{ display: 'block', zIndex:10000000 }}>
                     <div className="modal-dialog" role="document">
                         <div className="modal-content">
                             <div className="modal-header">

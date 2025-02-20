@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { SortableContainer, SortableElement, SortableHandle } from 'react-sortable-hoc';
 import { arrayMoveImmutable } from 'array-move';
-import { useSelector } from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
+import {setError, setSuccess} from '../../../stores/slices/livretSlice';
 
 const DragHandle = SortableHandle(() => (
     <td className="move_item"><i className="bi bi-arrows-move"></i></td>
@@ -28,6 +29,7 @@ const SortableContainerComponent = SortableContainer(({ items }) => {
 const ChangeModulesOrders = ({ modules }) => {
 
     const token = useSelector((state) => state.user.token);
+    const dispatch = useDispatch();
 
     const [sortedModules, setSortedModules] = useState(
         modules.filter((module) => module.type.name !== 'homeInfos' && module.type.name !== 'placeGroups')
@@ -55,12 +57,12 @@ const ChangeModulesOrders = ({ modules }) => {
             return response.json();
         }).then((data) => {
             if (data.error) {
-                console.log(data.error);
+                dispatch(setError({error: data.error}));
             }else{
-                console.log(data);
+                dispatch(setSuccess({success: data.message}));
             }
         }).catch((error) => {
-            console.log(error);
+            dispatch(setError({error: error}));
         });
     };
 
