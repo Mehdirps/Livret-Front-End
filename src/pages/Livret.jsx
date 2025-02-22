@@ -13,6 +13,7 @@ import Loading from "../components/Loading";
 import LivretFooter from '../components/LivretFooter';
 import Error from '../components/Error';
 import Success from '../components/Success';
+import { Helmet } from 'react-helmet';
 
 const Livret = () => {
     const { slug, id } = useParams();
@@ -45,6 +46,9 @@ const Livret = () => {
             });
     }, [slug, id]);
 
+    console.log(livret);
+    
+
     if (!livret) {
         return <Loading />;
     }
@@ -58,6 +62,10 @@ const Livret = () => {
             color: livret.text_color,
             fontFamily: livret.font
         }}>
+            <Helmet>
+                <title>{livret.establishment_name} - Heberginfos</title>
+                <meta name="description" content={`Découvrez le livret d'accueil '${livret.livret_name}' de l'établissement ${livret.establishment_name}, ${livret.description}`} />
+            </Helmet>
             <main>
                 <div className="container py-5 text-center">
                     <div className="row justify-content-center">
