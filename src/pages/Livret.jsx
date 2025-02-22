@@ -14,6 +14,7 @@ import LivretFooter from '../components/LivretFooter';
 import Error from '../components/Error';
 import Success from '../components/Success';
 import { Helmet } from 'react-helmet';
+import ModuleInfos from '../components/modules/ModuleInfos';
 
 const Livret = () => {
     const { slug, id } = useParams();
@@ -46,27 +47,23 @@ const Livret = () => {
             });
     }, [slug, id]);
 
-    console.log(livret);
-    
-
     if (!livret) {
         return <Loading />;
     }
 
     return (
-        <div style={{
+        <main className='livret' style={{
             height: "100vh",
             backgroundImage: `url(${process.env.REACT_APP_URL}${livret.background})`,
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
-            color: livret.text_color,
             fontFamily: livret.font
         }}>
             <Helmet>
                 <title>{livret.establishment_name} - Heberginfos</title>
                 <meta name="description" content={`Découvrez le livret d'accueil '${livret.livret_name}' de l'établissement ${livret.establishment_name}, ${livret.description}`} />
             </Helmet>
-            <main>
+            <section className='livret-content'>
                 <div className="container py-5 text-center">
                     <div className="row justify-content-center">
                         <div className="col-lg-6">
@@ -74,13 +71,14 @@ const Livret = () => {
                                 className="img-fluid rounded-circle mx-auto d-block" />
                         </div>
                     </div>
-                    <div className="row justify-content-center mt-4">
+                    <div className="row justify-content-center mt-4" style={{ color: livret.text_color }}>
                         <div className="col-lg-6">
                             <h1 className="display-4">{livret.livret_name}</h1>
                             <p className="lead">{livret.description}</p>
                         </div>
                     </div>
-                    <div className="row modules">
+                    <div className="modules">
+                        <ModuleInfos data={livret} />
                         {
                             modules
                                 .filter(module => module.data && module.data.length > 0)
@@ -90,7 +88,7 @@ const Livret = () => {
                     </div>
                     <HomeInfosModal livret={livret} homeInfos={homeInfos} />
                 </div>
-            </main>
+            </section>
             <LivretFooter livret={livret} />
             {
                 error && (
@@ -102,7 +100,8 @@ const Livret = () => {
                     <Success success={success} />
                 )
             }
-        </div>
+            <div className="filter"></div>
+        </main>
     );
 };
 

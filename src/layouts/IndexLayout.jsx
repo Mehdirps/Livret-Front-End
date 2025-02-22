@@ -30,9 +30,9 @@ const IndexLayout = () => {
                     </div>
                 </div>
             </nav>
-            <div className="container">
+            <main className="container">
                 <Outlet />
-            </div>
+            </main>
         </>
     );
 };

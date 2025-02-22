@@ -3,7 +3,7 @@ import React from 'react';
 const ModuleDigicode = ({ data }) => {
     return (
         <>
-            <div className="col-lg-4 col-md-4 col-sm-6">
+            <div className="col-lg-2 col-md-3 col-sm-6">
                 <button type="button" className="btn w-100" data-bs-toggle="modal" data-bs-target="#digicodeModal">
                     <div className="card text-center w-100">
                         <i className="bi bi-key-fill"></i>
