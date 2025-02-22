@@ -5,22 +5,25 @@ import { useSelector } from "react-redux";
 import SupportContact from './SupportContact';
 import Cart from './shop/cart/Cart';
 
-const Sidebar = ({toggleSidebar}) => {
+const Sidebar = ({ toggleSidebar }) => {
     const livret = useSelector(state => state.livret.livret);
 
     return (
         <>
-            <div 
-                className={`d-flex flex-column p-3 text-white bg-dark sidebar`} 
+            <div
+                className={`d-flex flex-column p-3 text-white bg-dark sidebar`}
                 style={{ zIndex: 2000, position: 'fixed', top: 0, bottom: 0, left: 0, width: '250px', overflowY: 'auto' }}
             >
-                <button 
-                    className="btn-close btn-close-white d-md-none" 
-                    onClick={() => toggleSidebar()} 
+                <button
+                    className="btn-close btn-close-white d-md-none"
+                    onClick={() => toggleSidebar()}
                     style={{ marginLeft: 'auto' }}
                 ></button>
 
-                <NavLink onClick={() => toggleSidebar()} to="/dashboard" className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                <NavLink onClick={() => toggleSidebar()} to="/dashboard" className="d-flex flex-column align-items-center mb-3 mb-md-0 text-white text-decoration-none">
+                    <figure className='logo'>
+                        <img src="./img/logo.png" alt="Logo de site Heberginfos" />
+                    </figure>
                     <span className="fs-4">Dashboard</span>
                 </NavLink>
                 <hr />

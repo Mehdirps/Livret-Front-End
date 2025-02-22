@@ -1,15 +1,19 @@
 import React from 'react';
-import {NavLink, Outlet} from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 
 const IndexLayout = () => {
     return (
         <>
             <nav className="navbar navbar-expand-lg bg-body-tertiary">
                 <div className="container">
-                    <NavLink className="navbar-brand" to={'/'}>Livret d'accueil</NavLink>
+                    <NavLink className="navbar-brand" to={'/'}>
+                        <figure className='logo'>
+                            <img src="./img/logo.png" alt="Logo de site Heberginfos" />
+                        </figure>
+                    </NavLink>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
@@ -27,7 +31,7 @@ const IndexLayout = () => {
                 </div>
             </nav>
             <div className="container">
-                <Outlet/>
+                <Outlet />
             </div>
         </>
     );
