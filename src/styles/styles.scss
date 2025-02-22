@@ -1,4 +1,5 @@
 @import 'components/loading';
+@import 'pages/welcome';
 
 .modal-backdrop {
     display: none !important;
@@ -114,4 +115,95 @@ section.livret-content,
 .modules .col-lg-2.col-md-3.col-sm-6 {
     width: 200px;
     max-width: 250px;
+}
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    font-size: 0.9rem;
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer_content {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 1200px;
+        margin-bottom: 20px;
+
+        .footer_logo {
+            .logo {
+                width: 100px;
+                height: 100px;
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+
+        .footer_links {
+            h3 {
+                margin-bottom: 10px;
+            }
+
+            ul {
+                list-style: none;
+                padding: 0;
+
+                li {
+                    margin-bottom: 5px;
+
+                    a {
+                        color: #fff;
+                        text-decoration: none;
+                        transition: color 0.3s;
+
+                        &:hover {
+                            color: #ddd;
+                        }
+                    }
+                }
+            }
+        }
+
+        .footer_contact {
+            h3 {
+                margin-bottom: 10px;
+            }
+            p {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+
+                a {
+                    color: #fff;
+                    text-decoration: none;
+                    font-size: 1.2rem;
+
+                    i {
+                        margin-right: 5px;
+                    }
+
+                    &:hover {
+                        color: #ddd;
+                    }
+                }
+            }
+        }
+    }
+
+    .footer_legal {
+        text-align: center;
+        font-size: 0.8rem;
+
+        .copy {
+            margin: 0;
+            padding: 0;
+        }
+    }
 }

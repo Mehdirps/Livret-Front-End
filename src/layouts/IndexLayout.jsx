@@ -30,9 +30,48 @@ const IndexLayout = () => {
                     </div>
                 </div>
             </nav>
-            <main className="container">
+            <main>
                 <Outlet />
             </main>
+            <footer>
+                <div className="container">
+                    <div className="footer_content">
+                        <div className="footer_logo">
+                            <figure className='logo'>
+                                <img src="./img/logo.png" alt="Logo de site Heberginfos" />
+                            </figure>
+                        </div>
+                        <div className="footer_links">
+                            <h3>Liens utiles</h3>
+                            <ul>
+                                <li><NavLink to={'/'}>Accueil</NavLink></li>
+                                <li><NavLink to={'/connexion'} onClick={() => {
+                                    localStorage.setItem('openLogin', true);
+                                }}>Inscription/Connexion</NavLink></li>
+                                <li><NavLink to={'/mentions-legales'}>Mentions légales</NavLink></li>
+                                <li><NavLink to={'/cgu'}>CGU</NavLink></li>
+                                <li><NavLink to={'/cgv'}>CGV</NavLink></li>
+                            </ul>
+                        </div>
+                        <div className="footer_contact">
+                            <h3>Contact</h3>
+                            <div className="footer_contact_content">
+                                <p>
+                                    <a href="mailto:contact@heberginfos.fr">
+                                        <i className="bi bi-envelope"></i>
+                                    </a>
+                                    <a href="tel:+33612345678">
+                                        <i className="bi bi-telephone"></i>
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="footer_legal">
+                        <p className='copy'>&copy; 2025 Heberginfos - Tous droits réservés</p>
+                    </div>
+                </div>
+            </footer>
         </>
     );
 };

@@ -1,0 +1,130 @@
+.welcome {
+
+    .container{ 
+        margin: auto;
+    }
+    h1{
+        font-size: 2rem;
+        margin: 25px 0;
+        text-align: center;
+    }
+
+    .presentation{
+
+        @media screen and (max-width: 768px){
+            flex-direction: column;
+            
+        }
+
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 25px;
+        margin: 50px auto;
+
+        .presentation_text{
+            flex: 1;
+            text-align: left;
+        }
+
+        figure{
+            flex: 1;
+            img{
+                width: 100%;
+                height: auto;
+            }
+        }
+    }
+
+    .livret_demo {
+        width: 100%;
+
+        img{
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    .points_fort {
+        margin: 50px 0;
+        text-align: center;
+
+        .points_fort_cards {
+            margin: 25px auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 25px;
+
+            .points_fort_card{
+                background-color: #f8f9fa;
+                padding: 25px;
+                border-radius: 10px;
+                flex: 1;
+                img{
+                    height: 150px;
+                    margin: 15px 0;
+                }
+            }
+        }
+    }
+    .text{
+        margin-top: 25px;
+        padding: 25px 0;
+        text-align: center;
+        background-color: #f8f9fa;
+    }
+
+    .livret_infos {
+        margin: 50px auto;
+        text-align: center;
+
+        h2{
+            text-align: center;
+        }
+        .livret_infos_icons{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 25px;
+            margin: 50px 0;
+
+            .livret_infos_icon{
+                background-color: #f8f9fa;
+                padding: 25px;
+                border-radius: 10px;
+                flex: 1;
+                min-width: 100px;
+                min-height: 100px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+    }
+
+    .livret_demo {
+        .demo_button{
+            margin: 25px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 25px;
+            border-radius: 10px;
+            background-color: #3dc9fe;
+            color: #fff;
+            cursor: pointer;
+            transition: 0.3s;
+            width: max-content;
+            text-decoration: none;
+
+            &:hover{
+                background-color: #13b7f3;
+            }
+        }
+    }
+}
