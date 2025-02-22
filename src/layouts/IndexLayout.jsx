@@ -20,7 +20,7 @@ const IndexLayout = () => {
                             <li className="nav-item">
                                 <NavLink className="nav-link" to={'/connexion'} onClick={() => {
                                     localStorage.setItem('openLogin', true);
-                                }}>Connexion</NavLink>
+                                }}>Inscription/Connexion</NavLink>
                             </li>
                         </ul>
                     </div>
