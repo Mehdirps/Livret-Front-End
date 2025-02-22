@@ -6,7 +6,7 @@ const ModuleInfos = ({ data }) => {
             <div className="col-lg-2 col-md-3 col-sm-6">
                 <button type="button" className="btn w-100" data-bs-toggle="modal" data-bs-target="#infoModal">
                     <div className="card text-center w-100">
-                        <i class="bi bi-house"></i>
+                    <i class="bi bi-house-door-fill"></i>
                         L'établissement
                     </div>
                 </button>
