@@ -33,7 +33,7 @@ const IndexLayout = () => {
             <main>
                 <Outlet />
             </main>
-            <footer>
+            <footer className='index_footer'>
                 <div className="container">
                     <div className="footer_content">
                         <div className="footer_logo">
