@@ -22,7 +22,7 @@ const Sidebar = ({ toggleSidebar }) => {
 
                 <NavLink onClick={() => toggleSidebar()} to="/dashboard" className="d-flex flex-column align-items-center mb-3 mb-md-0 text-white text-decoration-none">
                     <figure className='logo'>
-                        <img src="./img/logo.png" alt="Logo de site Heberginfos" />
+                        <img src="../img/logo.png" alt="Logo de site Heberginfos" />
                     </figure>
                     <span className="fs-4">Dashboard</span>
                 </NavLink>
