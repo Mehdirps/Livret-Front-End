@@ -10,18 +10,20 @@ const Stats = () => {
     const token = useSelector(state => state.user.token);
     const [statsDatas, setStatsDatas] = useState(null);
 
+    
+    
     const dispatch = useDispatch();
-
+    
     useEffect(() => {
-        fetch(`${process.env.REACT_APP_API_URL}dashboard/stats/`, {
+        fetch(`${process.env.REACT_APP_API_URL}dashboard/stats`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer ' + token
             },
         })
-            .then(response => response.json())
-            .then(data => {
+        .then(response => response.json())
+        .then(data => {
                 setStatsDatas(data);
             })
             .catch((error) => {
