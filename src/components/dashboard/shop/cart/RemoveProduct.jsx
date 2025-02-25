@@ -13,9 +13,9 @@ const RemoveProduct = ({ productId }) => {
     }
 
     return (
-        <p className='btn btn-danger' onClick={() => handleRemove()}>
+        <button className='btn btn-danger' onClick={handleRemove} aria-label="Remove product">
             <i className="bi bi-trash"></i>
-        </p>
+        </button>
     );
 };
 

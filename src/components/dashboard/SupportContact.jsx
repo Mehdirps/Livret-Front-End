@@ -57,7 +57,7 @@ const SupportContact = () => {
             <>
                 {
                     open &&
-                    <div className="modal fade text-dark" id="supportContactModal" tabIndex="-1" aria-labelledby="supportContactModalLabel" aria-hidden="true">
+                    <div className="modal fade text-dark" id="supportContactModal" tabIndex="-1" aria-labelledby="supportContactModalLabel" aria-hidden="true" data-testid="support-contact-modal">
                         <div className="modal-dialog">
                             <div className="modal-content">
                                 <div className="modal-header">
