@@ -51,6 +51,7 @@ const IndexLayout = () => {
                                 <li><NavLink to={'/mentions-legales'}>Mentions légales</NavLink></li>
                                 <li><NavLink to={'/cgu'}>CGU</NavLink></li>
                                 <li><NavLink to={'/cgv'}>CGV</NavLink></li>
+                                <li><NavLink to={'/politique'}>Politique de confidentialité</NavLink></li>
                             </ul>
                         </div>
                         <div className="footer_contact">

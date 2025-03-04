@@ -15,6 +15,9 @@ import Inventories from '../../pages/dashboard/Inventories';
 import Shop from '../../pages/dashboard/Shop';
 import Order from '../../pages/dashboard/Order';
 import EditLivret from '../../pages/dashboard/EditLivret';
+import Politique from '../../pages/Politique';
+import CguCgv from '../../pages/CguCgv';
+import Mentions from '../../pages/Mentions';
 
 const Index = () => {
     return (
@@ -24,6 +27,10 @@ const Index = () => {
                 <Route element={<IndexLayout />}>
                     <Route index element={<Welcome />} />
                     <Route path={'/connexion'} element={<Authentification />} />
+                    <Route path={'/politique'} element={<Politique />} />
+                    <Route path={'/cgu'} element={<CguCgv />} />
+                    <Route path={'/cgv'} element={<CguCgv />} />
+                    <Route path={'/mentions-legales'} element={<Mentions />} />
                 </Route>
                 <Route path={'premiere_connexion'} element={<FirstLogin />} />
                 <Route path={'/dashboard'} element={<DashboardLayout />}>
