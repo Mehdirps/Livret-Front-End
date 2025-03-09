@@ -26,8 +26,8 @@ const OrdersTable = ({ orders }) => {
                                     <td>{order.total_price} €</td>
                                     <td>
                                         <ul>
-                                            {JSON.parse(order.product_ids).map((productId, index) => (
-                                                <li key={index}>Produit ID: {productId}</li>
+                                            {order.products.map((product, index) => (
+                                                <li key={index}>{product.name}</li>
                                             ))}
                                         </ul>
                                     </td>
