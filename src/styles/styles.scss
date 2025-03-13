@@ -207,3 +207,21 @@ section.livret-content,
         }
     }
 }
+
+.cart-button{
+    position: relative;
+}
+
+.cart_quantity{
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    background-color: #FFF;
+    color: #000;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
