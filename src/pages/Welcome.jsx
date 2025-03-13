@@ -81,7 +81,7 @@ const Welcome = () => {
                         <figure>
                             <img src="./img/livret-demo.png" alt="Un livret d'accueil de démonstration" />
                         </figure>
-                        <a href="http://localhost:3000/livret/livret-mehdi-hotel/1" className='demo_button'>Découvrir le livret de démonstration</a>
+                        <a href="https://herbeginfos.fr/livret/livret-mehdi-hotel/1" className='demo_button' target='_blank'>Découvrir le livret de démonstration</a>
                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
                     </div>
                 </div>
