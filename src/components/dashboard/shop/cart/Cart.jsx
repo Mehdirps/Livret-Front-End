@@ -26,7 +26,12 @@ const Cart = () => {
         <>
             <button type="button" className="btn btn-primary cart-button" data-bs-toggle="modal" data-bs-target="#cartModal">
                 <i className="bi bi-cart-fill"></i>
-                Mon panier <span className='cart_quantity'>{cartLength}</span>
+                Mon panier 
+                {
+                    cartLength > 0 && (
+                        <span className='cart_quantity'>{cartLength}</span>
+                    )
+                }
             </button>
             <PaiementsModal calculateTotal={calculateTotal} />
             <CartModal calculateTotal={calculateTotal} />
