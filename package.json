@@ -36,7 +36,8 @@
     "build": "react-scripts build",
     "test": "jest",
     "eject": "react-scripts eject",
-    "postbuild": "react-snap"
+    "postbuild": "react-snap",
+    "install:legacy": "npm install --legacy-peer-deps"
   },
   "browserslist": {
     "production": [
