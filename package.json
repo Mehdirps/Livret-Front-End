@@ -45,7 +45,8 @@
     "lint": "npm run lint:js && npm run lint:css && npm run lint:html",
     "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css,scss,html}'",
     "prepare": "husky install",
-    "install:legacy": "npm install --legacy-peer-deps"
+    "install:legacy": "npm install --legacy-peer-deps",
+    "ci": "npm run lint && npm test"
   },
   "browserslist": {
     "production": [
