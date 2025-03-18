@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import IndexLayout from "../../layouts/IndexLayout";
 import Welcome from "../../pages/Welcome";
@@ -11,42 +11,42 @@ import Livret from "../../pages/Livret";
 import Background from "../../pages/dashboard/Background";
 import Stats from "../../pages/dashboard/Stats";
 import Suggest from "../../pages/dashboard/Suggest";
-import Inventories from '../../pages/dashboard/Inventories';
-import Shop from '../../pages/dashboard/Shop';
-import Order from '../../pages/dashboard/Order';
-import EditLivret from '../../pages/dashboard/EditLivret';
-import Politique from '../../pages/Politique';
-import CguCgv from '../../pages/CguCgv';
-import Mentions from '../../pages/Mentions';
+import Inventories from "../../pages/dashboard/Inventories";
+import Shop from "../../pages/dashboard/Shop";
+import Order from "../../pages/dashboard/Order";
+import EditLivret from "../../pages/dashboard/EditLivret";
+import Politique from "../../pages/Politique";
+import CguCgv from "../../pages/CguCgv";
+import Mentions from "../../pages/Mentions";
 
 const Index = () => {
-    return (
-        <BrowserRouter>
-            <Routes>
-                <Route path={'/livret/:slug/:id'} element={<Livret />} />
-                <Route element={<IndexLayout />}>
-                    <Route index element={<Welcome />} />
-                    <Route path={'/connexion'} element={<Authentification />} />
-                    <Route path={'/politique'} element={<Politique />} />
-                    <Route path={'/cgu'} element={<CguCgv />} />
-                    <Route path={'/cgv'} element={<CguCgv />} />
-                    <Route path={'/mentions-legales'} element={<Mentions />} />
-                </Route>
-                <Route path={'premiere_connexion'} element={<FirstLogin />} />
-                <Route path={'/dashboard'} element={<DashboardLayout />}>
-                    <Route index element={<DashboardIndex />} />
-                    <Route path={'profil'} element={<Profile />} />
-                    <Route path={'background'} element={<Background />} />
-                    <Route path={'stats'} element={<Stats />} />
-                    <Route path={'suggestions'} element={<Suggest />} />
-                    <Route path={'inventories'} element={<Inventories />} />
-                    <Route path={'shop'} element={<Shop />} />
-                    <Route path={'orders'} element={<Order />} />
-                    <Route path={'edit_livret'} element={<EditLivret />} />
-                </Route>
-            </Routes>
-        </BrowserRouter>
-    );
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path={"/livret/:slug/:id"} element={<Livret />} />
+        <Route element={<IndexLayout />}>
+          <Route index element={<Welcome />} />
+          <Route path={"/connexion"} element={<Authentification />} />
+          <Route path={"/politique"} element={<Politique />} />
+          <Route path={"/cgu"} element={<CguCgv />} />
+          <Route path={"/cgv"} element={<CguCgv />} />
+          <Route path={"/mentions-legales"} element={<Mentions />} />
+        </Route>
+        <Route path={"premiere_connexion"} element={<FirstLogin />} />
+        <Route path={"/dashboard"} element={<DashboardLayout />}>
+          <Route index element={<DashboardIndex />} />
+          <Route path={"profil"} element={<Profile />} />
+          <Route path={"background"} element={<Background />} />
+          <Route path={"stats"} element={<Stats />} />
+          <Route path={"suggestions"} element={<Suggest />} />
+          <Route path={"inventories"} element={<Inventories />} />
+          <Route path={"shop"} element={<Shop />} />
+          <Route path={"orders"} element={<Order />} />
+          <Route path={"edit_livret"} element={<EditLivret />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
 };
 
 export default Index;
