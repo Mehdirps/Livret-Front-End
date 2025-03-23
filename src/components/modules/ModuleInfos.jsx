@@ -1,6 +1,7 @@
 import React from 'react';
 
 const ModuleInfos = ({ data }) => {
+    console.log(data);
     
     return (
         <>
@@ -20,7 +21,20 @@ const ModuleInfos = ({ data }) => {
                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div className="modal-body">
-                            <p>{data}</p>
+                            <div className="container">
+                                <div className="row">
+                                    <div className="col-12">
+                                        <h2>{data.establishment_name}</h2>
+                                        <div className="establishment-details mt-3">
+                                            <p><i className="bi bi-geo-alt-fill me-2"></i> <strong>Adresse:</strong> {data.establishment_address}</p>
+                                            <p><i className="bi bi-telephone-fill me-2"></i> <strong>Téléphone:</strong> {data.establishment_phone}</p>
+                                            <p><i className="bi bi-envelope-fill me-2"></i> <strong>Email:</strong> {data.establishment_email}</p>
+                                            <p><i className="bi bi-globe me-2"></i> <strong>Site web:</strong> <a href={data.establishment_website} target="_blank" rel="noopener noreferrer">{data.establishment_website}</a></p>
+                                            <p><i className="bi bi-building me-2"></i> <strong>Type:</strong> {data.establishment_type}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

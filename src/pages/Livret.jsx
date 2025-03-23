@@ -50,7 +50,7 @@ const Livret = () => {
     if (!livret) {
         return <Loading />;
     }
-
+    
     return (
         <main className='livret' style={{
             height: "100vh",
