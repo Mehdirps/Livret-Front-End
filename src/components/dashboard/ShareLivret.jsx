@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 const ShareLivret = () => {
     const livret = useSelector((state) => state.livret.livret) || {};
 
-    const shareUrl = `${process.env.REACT_APP_API_URL}livret/${livret.slug}/${livret.id}`;
+    const shareUrl = `https://herbeginfos.fr/livret/${livret.slug}/${livret.id}`;
 
     const copyLink = () => {
         navigator.clipboard.writeText(shareUrl);
@@ -27,6 +27,22 @@ const ShareLivret = () => {
                                     Vous pouvez partager votre livret d'accueil avec vos collègues, amis, famille, etc.
                                     Pour cela, vous devez copier le lien ci-dessous et le partager.
                                 </p>
+                                <div className='qrcode'>
+                                    <img src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(shareUrl)}`} alt="QR Code" style={{display:'block',margin:'auto'}}/>
+                                </div>
+                                <div className="mt-2 mb-3 text-center">
+                                    <span className="me-2">Télécharger le QR code:</span>
+                                    <a href={`https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(shareUrl)}&download=1&format=png`} 
+                                       className="btn btn-sm btn-outline-secondary me-2" 
+                                       download="qrcode.png">
+                                        PNG
+                                    </a>
+                                    <a href={`https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(shareUrl)}&download=1&format=svg`} 
+                                       className="btn btn-sm btn-outline-secondary me-2" 
+                                       download="qrcode.svg">
+                                        SVG
+                                    </a>
+                                </div>
                                 <div className="input-group mb-3">
                                     <input type="text" className="form-control" value={shareUrl} id="shareLink" readOnly />
                                     <button className="btn btn-primary" type="button" onClick={copyLink}>Copier</button>
