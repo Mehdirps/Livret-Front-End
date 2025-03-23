@@ -22,6 +22,9 @@ const IndexLayout = () => {
                                 <NavLink className="nav-link" to={'/'}>Accueil</NavLink>
                             </li>
                             <li className="nav-item">
+                                <NavLink className="nav-link" to={'/livrets'}>Listes des livrets</NavLink>
+                            </li>
+                            <li className="nav-item">
                                 <NavLink className="nav-link" to={'/connexion'} onClick={() => {
                                     localStorage.setItem('openLogin', true);
                                 }}>Inscription/Connexion</NavLink>

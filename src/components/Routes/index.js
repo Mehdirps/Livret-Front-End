@@ -18,6 +18,7 @@ import EditLivret from '../../pages/dashboard/EditLivret';
 import Politique from '../../pages/Politique';
 import CguCgv from '../../pages/CguCgv';
 import Mentions from '../../pages/Mentions';
+import Livrets from '../../pages/Livrets';
 
 const Index = () => {
     return (
@@ -25,6 +26,7 @@ const Index = () => {
             <Routes>
                 <Route path={'/livret/:slug/:id'} element={<Livret />} />
                 <Route element={<IndexLayout />}>
+                    <Route path={'/livrets'} element={<Livrets />} />
                     <Route index element={<Welcome />} />
                     <Route path={'/connexion'} element={<Authentification />} />
                     <Route path={'/politique'} element={<Politique />} />
