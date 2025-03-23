@@ -1,5 +1,5 @@
-import React from 'react';
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import React, { useEffect } from 'react';
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import IndexLayout from "../../layouts/IndexLayout";
 import Welcome from "../../pages/Welcome";
 import Authentification from "../../pages/Authentification";
@@ -20,9 +20,24 @@ import CguCgv from '../../pages/CguCgv';
 import Mentions from '../../pages/Mentions';
 import Livrets from '../../pages/Livrets';
 
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+  
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "auto"
+    });
+  }, [pathname]);
+  
+  return null;
+};
+
 const Index = () => {
     return (
         <BrowserRouter>
+            <ScrollToTop />
             <Routes>
                 <Route path={'/livret/:slug/:id'} element={<Livret />} />
                 <Route element={<IndexLayout />}>
