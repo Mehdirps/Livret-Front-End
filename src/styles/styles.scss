@@ -64,6 +64,10 @@ section.livret-content,
     z-index: 100;
 }
 
+section.livret-content {
+    z-index: 101;
+}
+
 .socials {
     display: flex;
     flex-direction: row;
