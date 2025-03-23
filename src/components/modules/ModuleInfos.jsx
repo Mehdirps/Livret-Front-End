@@ -1,8 +1,6 @@
 import React from 'react';
 
 const ModuleInfos = ({ data }) => {
-    console.log(data);
-    
     return (
         <>
             <div className="col-lg-2 col-md-3 col-sm-6">
