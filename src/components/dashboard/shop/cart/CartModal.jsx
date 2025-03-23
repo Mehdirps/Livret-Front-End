@@ -49,6 +49,7 @@ const CartModal = ({ calculateTotal }) => {
                                 <div className="d-flex justify-content-between">
                                     <h6>Total :</h6>
                                     <h6>{calculateTotal()} €</h6>
+                                    <h6>(+ 4.90€ de frais de port inclu dans le total)</h6>
                                 </div>
                             </>
                         )}
