@@ -4,9 +4,7 @@ import LivretSuggestionForm from './LivretSuggestionForm';
 const LivretFooter = ({ livret }) => {
     return (
         <footer className="container mb-5 livret-footer">
-            {livret.suggest && (
-                <LivretSuggestionForm livretId={livret.id} />
-            )}
+            {livret.suggest ? <LivretSuggestionForm livretId={livret.id} /> : null}
             <div className="row socials">
                 {livret.establishmentWebsite && (
                     <div className='social-link'>
