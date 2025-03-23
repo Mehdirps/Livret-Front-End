@@ -41,7 +41,7 @@ const ModuleEndInfos = ({data}) => {
         });
     }
     return (
-        <div class="modal fade" id="endInfosModal" tabindex="-1" aria-labelledby="endInfosModalLabel"
+        <div class="modal fade" id="endInfosModal" tabIndex="-1" aria-labelledby="endInfosModalLabel"
              aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">

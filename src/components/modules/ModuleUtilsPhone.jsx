@@ -11,7 +11,7 @@ const ModuleUtilsPhone = ({ data }) => {
                     </div>
                 </button>
             </div>
-            <div className="modal fade" id="utilsPhoneModal" tabindex="-1" aria-labelledby="utilsPhoneModalLabel" aria-hidden="true">
+            <div className="modal fade" id="utilsPhoneModal" tabIndex="-1" aria-labelledby="utilsPhoneModalLabel" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">
                         <div className="modal-header">

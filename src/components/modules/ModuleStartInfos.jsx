@@ -11,7 +11,7 @@ const ModuleStartInfos = ({ data }) => {
                     </div>
                 </button>
             </div>
-            <div className="modal fade" id="startInfosModal" tabindex="-1" aria-labelledby="startInfosModalLabel" aria-hidden="true">
+            <div className="modal fade" id="startInfosModal" tabIndex="-1" aria-labelledby="startInfosModalLabel" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">
                         <div className="modal-header">

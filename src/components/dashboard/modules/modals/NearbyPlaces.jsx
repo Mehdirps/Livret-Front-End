@@ -86,7 +86,7 @@ const NearbyPlaces = ({data}) => {
     }
 
     return (
-        <div class="modal fade" id="nearbyPlacesModal" tabindex="-1" aria-labelledby="nearbyPlacesModalLabel"
+        <div class="modal fade" id="nearbyPlacesModal" tabIndex="-1" aria-labelledby="nearbyPlacesModalLabel"
              aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">

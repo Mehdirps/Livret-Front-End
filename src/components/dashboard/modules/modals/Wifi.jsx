@@ -43,7 +43,7 @@ const ModuleWifi = ({data}) => {
     }
 
     return (
-        <div class="modal fade" id="wifiModal" tabindex="-1" aria-labelledby="wifiModalLabel" aria-hidden="true">
+        <div class="modal fade" id="wifiModal" tabIndex="-1" aria-labelledby="wifiModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">

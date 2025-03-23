@@ -37,7 +37,7 @@ const ModuleHomeInfos = ({ data }) => {
 
     
     return (
-        <div class="modal fade" id="homeInfosModal" tabindex="-1" aria-labelledby="homeInfosModalLabel" aria-hidden="true">
+        <div class="modal fade" id="homeInfosModal" tabIndex="-1" aria-labelledby="homeInfosModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">

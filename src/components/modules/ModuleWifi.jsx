@@ -11,7 +11,7 @@ const ModuleWifi = ({ data }) => {
                     </div>
                 </button>
             </div>
-            <div className="modal fade" id="wifiModal" tabindex="-1" aria-labelledby="wifiModalLabel" aria-hidden="true">
+            <div className="modal fade" id="wifiModal" tabIndex="-1" aria-labelledby="wifiModalLabel" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">
                         <div className="modal-header">

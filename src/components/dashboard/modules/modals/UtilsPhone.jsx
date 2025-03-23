@@ -42,7 +42,7 @@ const ModuleUtilsPhone = ({ data }) => {
     }
 
     return (
-        <div class="modal fade" id="utilsPhoneModal" tabindex="-1" aria-labelledby="utilsPhoneModalLabel" aria-hidden="true">
+        <div class="modal fade" id="utilsPhoneModal" tabIndex="-1" aria-labelledby="utilsPhoneModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">

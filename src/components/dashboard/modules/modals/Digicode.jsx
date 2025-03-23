@@ -42,7 +42,7 @@ const ModuleDigicode = ({data}) => {
     }
 
     return (
-        <div class="modal fade" id="digicodeModal" tabindex="-1" aria-labelledby="digicodeModalLabel"
+        <div class="modal fade" id="digicodeModal" tabIndex="-1" aria-labelledby="digicodeModalLabel"
              aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">

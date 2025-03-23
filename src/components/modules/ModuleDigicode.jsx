@@ -11,7 +11,7 @@ const ModuleDigicode = ({ data }) => {
                     </div>
                 </button>
             </div>
-            <div className="modal fade" id="digicodeModal" tabindex="-1" aria-labelledby="digicodeModalLabel" aria-hidden="true">
+            <div className="modal fade" id="digicodeModal" tabIndex="-1" aria-labelledby="digicodeModalLabel" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">
                         <div className="modal-header">

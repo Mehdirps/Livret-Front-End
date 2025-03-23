@@ -20,7 +20,7 @@ const ModuleNearbyPlaces = ({ data, dataPlaces }) => {
                     </div>
                 </button>
             </div>
-            <div className="modal fade" id="placesGroupsModal" tabindex="-1" aria-labelledby="placesGroupsModalLabel" aria-hidden="true">
+            <div className="modal fade" id="placesGroupsModal" tabIndex="-1" aria-labelledby="placesGroupsModalLabel" aria-hidden="true">
                 <div className="modal-dialog modal-lg">
                     <div className="modal-content">
                         <div className="modal-header">

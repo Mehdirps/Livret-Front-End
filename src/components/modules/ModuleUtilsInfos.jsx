@@ -11,7 +11,7 @@ const ModuleUtilsInfos = ({ data }) => {
                     </div>
                 </button>
             </div>
-            <div className="modal fade" id="utilsInfosModal" tabindex="-1" aria-labelledby="utilsInfosModalLabel" aria-hidden="true">
+            <div className="modal fade" id="utilsInfosModal" tabIndex="-1" aria-labelledby="utilsInfosModalLabel" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">
                         <div className="modal-header">

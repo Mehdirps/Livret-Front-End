@@ -42,7 +42,7 @@ const ModuleUtilsInfos = ({data}) => {
     }
 
     return (
-        <div class="modal fade" id="utilsInfosModal" tabindex="-1" aria-labelledby="utilsInfosModalLabel"
+        <div class="modal fade" id="utilsInfosModal" tabIndex="-1" aria-labelledby="utilsInfosModalLabel"
              aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">

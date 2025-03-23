@@ -36,7 +36,7 @@ const PlaceGroups = ({data}) => {
         });
     }
     return (
-        <div class="modal fade" id="placeGroupsModal" tabindex="-1" aria-labelledby="placeGroupsModalLabel"
+        <div class="modal fade" id="placeGroupsModal" tabIndex="-1" aria-labelledby="placeGroupsModalLabel"
              aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
