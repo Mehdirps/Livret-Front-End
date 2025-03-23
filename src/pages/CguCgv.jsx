@@ -51,7 +51,7 @@ const CguCgv = () => {
                 <h2>3. Tarifs</h2>
                 <ul>
                     <li>Les prix des produits et services sont indiqués en euros, toutes taxes comprises (TTC).</li>
-                    <li>Tarif de 4.90€ pour la livraison d’une commande.</li>
+                    <li>Tarif de 4.90€ pour la livraison d'une commande.</li>
                 </ul>
 
                 <h2>4. Commandes</h2>
@@ -70,6 +70,7 @@ const CguCgv = () => {
                 <ul>
                     <li>Conformément à la législation en vigueur, le client dispose d'un délai de rétractation de 14 jours à compter de la réception du produit ou de la commande du service.</li>
                     <li>Pour exercer ce droit, le client doit contacter Herberginfos à <a href="mailto:contact@herbeginfos.fr">contact@herbeginfos.fr</a>.</li>
+                    <li>Les produits personnalisés ne sont pas éligibles au droit de rétractation et ne peuvent faire l'objet d'un remboursement, conformément à l'article L221-28 du Code de la consommation.</li>
                 </ul>
 
                 <h2>7. Livraison</h2>
