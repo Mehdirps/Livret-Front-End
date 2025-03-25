@@ -42,6 +42,8 @@ const EditLivret = () => {
                 dispatch(setError({error: data.error}));
             } else {
                 setModules(data.modules);
+                console.log(data.modules);
+                
             }
         }).catch((error) => {
             dispatch(setError({error: error}));

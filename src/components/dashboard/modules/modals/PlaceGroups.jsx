@@ -45,20 +45,20 @@ const PlaceGroups = ({data}) => {
         });
     }
     return (
-        <div class="modal fade" id="placeGroupsModal" tabIndex="-1" aria-labelledby="placeGroupsModalLabel"
+        <div className="modal fade" id="placeGroupsModal" tabIndex="-1" aria-labelledby="placeGroupsModalLabel"
              aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="placeGroupsModalLabel">Ajouter un groupe et un lieu</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div className="modal-dialog">
+                <div className="modal-content">
+                    <div className="modal-header">
+                        <h5 className="modal-title" id="placeGroupsModalLabel">Ajouter un groupe et un lieu</h5>
+                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body">
+                    <div className="modal-body">
                         <div>
                             <h6>Groupes</h6>
                             {
                                 data.length > 0 ?
-                                    <table class="table table-striped">
+                                    <table className="table table-striped">
                                         <thead>
                                         <tr>
                                             <th>Nom</th>
@@ -81,17 +81,17 @@ const PlaceGroups = ({data}) => {
                                     : <p>Aucun groupe</p>
                             }
                             <form onSubmit={(e) => addModulePlaceGroup(e)}>
-                                <div class="mb-3">
-                                    <label for="groupName" class="form-label">Nom du groupe</label>
-                                    <input type="text" class="form-control" id="groupName" name="groupName" required
+                                <div className="mb-3">
+                                    <label for="groupName" className="form-label">Nom du groupe</label>
+                                    <input type="text" className="form-control" id="groupName" name="groupName" required
                                            onChange={(e) => setGroupName(e.target.value)} value={groupName}/>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Ajouter un groupe</button>
+                                <button type="submit" className="btn btn-primary">Ajouter un groupe</button>
                             </form>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                    <div className="modal-footer">
+                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
                     </div>
                 </div>
             </div>

@@ -19,6 +19,8 @@ import PlaceGroups from './modals/PlaceGroups';
 import NearbyPlaces from './modals/NearbyPlaces';
 
 const ModuleCard = ({ module }) => {
+    console.log(module.type.name);
+    
     return (
         <>
             <div className="col-md-3 col-sm-4">
@@ -46,7 +48,7 @@ const ModuleCard = ({ module }) => {
                                             <UtilsInfos data={module.data} />
                                             : module.type.name === 'placeGroups' ?
                                                 <PlaceGroups data={module.data} />
-                                                : module.type.name === 'nearbyPlaces' ?
+                                                : module.type.name === 'NearbyPlaces' ?
                                                     <NearbyPlaces data={module.data} />
                                                     : null
 

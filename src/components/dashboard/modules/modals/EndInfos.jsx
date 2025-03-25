@@ -50,14 +50,14 @@ const ModuleEndInfos = ({data}) => {
         });
     }
     return (
-        <div class="modal fade" id="endInfosModal" tabIndex="-1" aria-labelledby="endInfosModalLabel"
+        <div className="modal fade" id="endInfosModal" tabIndex="-1" aria-labelledby="endInfosModalLabel"
              aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
+            <div className="modal-dialog">
+                <div className="modal-content">
+                    <div className="modal-header">
                         {
                             data.length > 0 ?
-                                <table class="table table-striped">
+                                <table className="table table-striped">
                                     <thead>
                                     <tr>
                                         <th>Nom</th>
@@ -82,30 +82,30 @@ const ModuleEndInfos = ({data}) => {
                                 : <p>Aucune information de départ</p>
                         }
                     </div>
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="wifiModalLabel">Ajouter une info de départ</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                    <div className="modal-dialog">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h5 className="modal-title" id="wifiModalLabel">Ajouter une info de départ</h5>
+                                <button type="button" className="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                             </div>
-                            <div class="modal-body">
+                            <div className="modal-body">
                                 <form id="wifiForm" onSubmit={(e) => addModuleEndInfo(e)}>
-                                    <div class="mb-3">
-                                        <label for="name" class="form-label">Nom</label>
-                                        <input type="text" class="form-control" id="name" name="name" required
+                                    <div className="mb-3">
+                                        <label for="name" className="form-label">Nom</label>
+                                        <input type="text" className="form-control" id="name" name="name" required
                                                onChange={(e) => setName(e.target.value)}/>
                                     </div>
-                                    <div class="mb-3">
-                                        <label for="text" class="form-label">Texte</label>
-                                        <textarea class="form-control" id="text" name="text" required
+                                    <div className="mb-3">
+                                        <label for="text" className="form-label">Texte</label>
+                                        <textarea className="form-control" id="text" name="text" required
                                                   onChange={(e) => setText(e.target.value)}></textarea>
                                     </div>
-                                    <button type="submit" class="btn btn-primary" id="saveDigicode">Sauvegarder</button>
+                                    <button type="submit" className="btn btn-primary" id="saveDigicode">Sauvegarder</button>
                                 </form>
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                            <div className="modal-footer">
+                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
                             </div>
                         </div>
                     </div>

@@ -51,13 +51,13 @@ const ModuleUtilsPhone = ({ data }) => {
     }
 
     return (
-        <div class="modal fade" id="utilsPhoneModal" tabIndex="-1" aria-labelledby="utilsPhoneModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
+        <div className="modal fade" id="utilsPhoneModal" tabIndex="-1" aria-labelledby="utilsPhoneModalLabel" aria-hidden="true">
+            <div className="modal-dialog">
+                <div className="modal-content">
+                    <div className="modal-header">
                         {
                             data.length > 0 ?
-                            <table class="table table-striped">
+                            <table className="table table-striped">
                                 <thead>
                                     <tr>
                                         <th>Nom</th>
@@ -82,27 +82,27 @@ const ModuleUtilsPhone = ({ data }) => {
                             : <p>Aucun numéro utile</p>
                         }
                     </div>
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="wifiModalLabel">Ajouter un numéro utile</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div className="modal-dialog">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h5 className="modal-title" id="wifiModalLabel">Ajouter un numéro utile</h5>
+                                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <div class="modal-body">
+                            <div className="modal-body">
                                 <form id="wifiForm" onSubmit={(e) => addModuleUtilsPhone(e)}>
-                                    <div class="mb-3">
-                                        <label for="name" class="form-label">Nom</label>
-                                        <input type="text" class="form-control" id="name" name="name" required onChange={(e) => setName(e.target.value)} />
+                                    <div className="mb-3">
+                                        <label for="name" className="form-label">Nom</label>
+                                        <input type="text" className="form-control" id="name" name="name" required onChange={(e) => setName(e.target.value)} />
                                     </div>
-                                    <div class="mb-3">
-                                        <label for="number" class="form-label">Numéro</label>
-                                        <input type="text" class="form-control" id="number" name="number" required onChange={(e) => setNumber(e.target.value)} />
+                                    <div className="mb-3">
+                                        <label for="number" className="form-label">Numéro</label>
+                                        <input type="text" className="form-control" id="number" name="number" required onChange={(e) => setNumber(e.target.value)} />
                                     </div>
-                                    <button type="submit" class="btn btn-primary" id="saveDigicode">Sauvegarder</button>
+                                    <button type="submit" className="btn btn-primary" id="saveDigicode">Sauvegarder</button>
                                 </form>
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                            <div className="modal-footer">
+                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
                             </div>
                         </div>
                     </div>

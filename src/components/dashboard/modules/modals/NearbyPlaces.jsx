@@ -95,24 +95,24 @@ const NearbyPlaces = ({data}) => {
     }
 
     return (
-        <div class="modal fade" id="nearbyPlacesModal" tabIndex="-1" aria-labelledby="nearbyPlacesModalLabel"
+        <div className="modal fade" id="NearbyPlacesModal" tabIndex="-1" aria-labelledby="NearbyPlacesModalLabel"
              aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="nearbyPlacesModalLabel">Ajouter un groupe et un lieu</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div className="modal-dialog">
+                <div className="modal-content">
+                    <div className="modal-header">
+                        <h5 className="modal-title" id="NearbyPlacesModalLabel">Ajouter un groupe et un lieu</h5>
+                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body">
+                    <div className="modal-body">
 
                         <div>
                             <h6>Lieux</h6>
                             {
                                 data.length > 0 ?
 
-                                    <div class="table-responsive">
+                                    <div className="table-responsive">
 
-                                        <table class="table table-striped">
+                                        <table className="table table-striped">
                                             <thead>
                                             <tr>
                                                 <th>Nom</th>
@@ -153,16 +153,16 @@ const NearbyPlaces = ({data}) => {
                                     : <p>Aucun lieu</p>
                             }
                             <form onSubmit={(e) => addModuleNearbyPlaces(e)}>
-                                <div class="mb-3">
-                                    <label for="placeName" class="form-label">Nom du lieu</label>
-                                    <input type="text" class="form-control" id="placeName" name="placeName" required
+                                <div className="mb-3">
+                                    <label for="placeName" className="form-label">Nom du lieu</label>
+                                    <input type="text" className="form-control" id="placeName" name="placeName" required
                                            onChange={(e) => setPlaceName(e.target.value)} value={placeName}/>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="placeGroup" class="form-label">Groupe</label>
+                                <div className="mb-3">
+                                    <label for="placeGroup" className="form-label">Groupe</label>
                                     {
                                         placeGroups.length > 0 ?
-                                            <select class="form-select" id="placeGroup" name="placeGroup" required
+                                            <select className="form-select" id="placeGroup" name="placeGroup" required
                                                     onChange={(e) => setPlaceGroup(e.target.value)}>
                                                 <option disabled selected>-- Choisir un groupe --</option>
                                                 {
@@ -174,34 +174,34 @@ const NearbyPlaces = ({data}) => {
                                             : <p>Aucun groupe</p>
                                     }
                                 </div>
-                                <div class="mb-3">
-                                    <label for="placeAddress" class="form-label">Adresse du lieu</label>
-                                    <input type="text" class="form-control" id="placeAddress" name="placeAddress"
+                                <div className="mb-3">
+                                    <label for="placeAddress" className="form-label">Adresse du lieu</label>
+                                    <input type="text" className="form-control" id="placeAddress" name="placeAddress"
                                            required onChange={(e) => setPlaceAddress(e.target.value)}
                                            value={placeAddress}/>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="placePhone" class="form-label">Téléphone du lieu</label>
-                                    <input type="text" class="form-control" id="placePhone" name="placePhone"
+                                <div className="mb-3">
+                                    <label for="placePhone" className="form-label">Téléphone du lieu</label>
+                                    <input type="text" className="form-control" id="placePhone" name="placePhone"
                                            onChange={(e) => setPlacePhone(e.target.value)} value={placePhone}/>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="travelTime" class="form-label">Temps de trajet</label>
-                                    <input type="text" class="form-control" id="travelTime" name="travelTime"
+                                <div className="mb-3">
+                                    <label for="travelTime" className="form-label">Temps de trajet</label>
+                                    <input type="text" className="form-control" id="travelTime" name="travelTime"
                                            onChange={(e) => setTravelTime(e.target.value)} value={travelTime}/>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="placeDescription" class="form-label">Description du lieu</label>
-                                    <textarea class="form-control" id="placeDescription" name="placeDescription"
+                                <div className="mb-3">
+                                    <label for="placeDescription" className="form-label">Description du lieu</label>
+                                    <textarea className="form-control" id="placeDescription" name="placeDescription"
                                               onChange={(e) => setPlaceDescription(e.target.value)}
                                     ></textarea>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Ajouter un lieu</button>
+                                <button type="submit" className="btn btn-primary">Ajouter un lieu</button>
                             </form>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                    <div className="modal-footer">
+                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
                     </div>
                 </div>
             </div>
