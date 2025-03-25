@@ -24,7 +24,7 @@ const NearbyPlaces = ({data}) => {
     const [placePhone, setPlacePhone] = useState("");
     const [travelTime, setTravelTime] = useState("");
     const [placeDescription, setPlaceDescription] = useState("");
-
+    
     const [placeGroups, setPlaceGroups] = useState([]);
 
     useEffect(() => {
@@ -154,12 +154,12 @@ const NearbyPlaces = ({data}) => {
                             }
                             <form onSubmit={(e) => addModuleNearbyPlaces(e)}>
                                 <div className="mb-3">
-                                    <label for="placeName" className="form-label">Nom du lieu</label>
+                                    <label for="placeName" className="form-label">Nom du lieu*</label>
                                     <input type="text" className="form-control" id="placeName" name="placeName" required
                                            onChange={(e) => setPlaceName(e.target.value)} value={placeName}/>
                                 </div>
                                 <div className="mb-3">
-                                    <label for="placeGroup" className="form-label">Groupe</label>
+                                    <label for="placeGroup" className="form-label">Groupe*</label>
                                     {
                                         placeGroups.length > 0 ?
                                             <select className="form-select" id="placeGroup" name="placeGroup" required
@@ -176,8 +176,7 @@ const NearbyPlaces = ({data}) => {
                                 </div>
                                 <div className="mb-3">
                                     <label for="placeAddress" className="form-label">Adresse du lieu</label>
-                                    <input type="text" className="form-control" id="placeAddress" name="placeAddress"
-                                           required onChange={(e) => setPlaceAddress(e.target.value)}
+                                    <input type="text" className="form-control" id="placeAddress" name="placeAddress" onChange={(e) => setPlaceAddress(e.target.value)}
                                            value={placeAddress}/>
                                 </div>
                                 <div className="mb-3">
