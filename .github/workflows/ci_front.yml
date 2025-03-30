@@ -1,0 +1,58 @@
+name: CI Front-End
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Build React app
+      run: npm run build
+
+    - name: Deploy via FTP
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      with:
+        server: choucas.o2switch.net
+        username: rame5605
+        password: ${{ secrets.FTP_PASSWORD }}
+        protocol: ftp
+        port: 21
+        local-dir: ./build/
+        server-dir: /testfront.fr/
+        state-name: .ftp-deploy-sync-state.json
+        dangerous-clean-slate: false
+        exclude: |
+          **/.git*
+          **/.git*/**
+          **/node_modules/**
+          .gitignore
+          README.md
+          .env.local
+          .env.development
+          .env.test
+          .env.production
+          yarn.lock
+          package-lock.json
+          .DS_Store
+          .editorconfig
+          .ftp-deploy-sync-state.json
+        log-level: verbose
