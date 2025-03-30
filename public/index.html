@@ -57,15 +57,46 @@
   <script type="text/javascript">
     tarteaucitron.user.gtagUa = 'G-CR8VX3SMBH';
     (tarteaucitron.job = tarteaucitron.job || []).push('gtag');
-    document.addEventListener('DOMContentLoaded', function () {
+    
+    // Fonction améliorée pour gérer le bouton tarteaucitron
+    function setupTarteaucitronManager() {
+      // Approche 1: Écoute directe sur le bouton s'il existe déjà
       const managerButton = document.getElementById('tarteaucitronManager');
       if (managerButton) {
-        managerButton.addEventListener('click', function () {
+        managerButton.addEventListener('click', function(e) {
+          e.preventDefault();
           tarteaucitron.userInterface.openPanel();
         });
+        console.log('Bouton Tarteaucitron trouvé et configuré');
       }
-    });
+      
+      // Approche 2: Délégation d'événement pour capturer les clics même si le bouton est ajouté plus tard
+      document.addEventListener('click', function(e) {
+        if (e.target && (e.target.id === 'tarteaucitronManager' || e.target.closest('#tarteaucitronManager'))) {
+          e.preventDefault();
+          tarteaucitron.userInterface.openPanel();
+          console.log('Ouverture du panneau via délégation');
+        }
+      });
+    }
 
+    // Configuration initiale au chargement de la page
+    document.addEventListener('DOMContentLoaded', function() {
+      // Essaie immédiatement
+      setupTarteaucitronManager();
+      
+      // Puis réessaie après un court délai pour s'assurer que Tarteaucitron a eu le temps de s'initialiser
+      setTimeout(setupTarteaucitronManager, 1000);
+    });
+    
+    // Fonction pour ouvrir manuellement le panneau si nécessaire
+    window.openTarteaucitronPanel = function() {
+      if (typeof tarteaucitron !== 'undefined' && tarteaucitron.userInterface) {
+        tarteaucitron.userInterface.openPanel();
+        return true;
+      }
+      return false;
+    };
   </script>
 </body>
 
