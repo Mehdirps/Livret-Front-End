@@ -7,20 +7,31 @@
  * distribution ou reproduction non autorisée est strictement interdite
  * sans une autorisation écrite préalable de Mehdi Raposo.
  */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCart } from '../../../stores/slices/cartSlice';
+import { setCart, setUserId } from '../../../stores/slices/cartSlice';
 
 
 const ProductCard = ({ product }) => {
 
     const cart = useSelector(state => state.cart.cart);
+    const user = useSelector(state => state.user.user);
+    
+    const userId = user?.id;
 
     const dispatch = useDispatch();
+    
+    useEffect(() => {
+        if (userId) {
+            dispatch(setUserId({ userId }));
+        }
+    }
+    , [userId, dispatch]);
+
 
     const addToCart = (product) => {
-        if (localStorage.getItem('cart') === null) {
-            localStorage.setItem('cart', JSON.stringify([]));
+        if (localStorage.getItem(`cart-${userId}`)) {
+            localStorage.setItem(`cart-${userId}`, JSON.stringify(cart));
         }
 
         const newCart = [...cart];
