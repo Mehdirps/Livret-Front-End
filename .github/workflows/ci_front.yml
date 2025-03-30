@@ -25,8 +25,20 @@ jobs:
     - name: Install dependencies
       run: npm install --legacy-peer-deps
 
+    - name: Install missing Babel plugin
+      run: npm install --save-dev @babel/plugin-proposal-private-property-in-object --legacy-peer-deps
+
     - name: Build React app
-      run: npm run build
+      run: |
+        # Configure Puppeteer to run without sandbox in CI environment
+        PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
+        NODE_OPTIONS=--max_old_space_size=4096
+        PUPPETEER_EXECUTABLE_PATH=/usr/bin/google-chrome-stable
+        npm run build
+      env:
+        CI: true
+        PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
+        PUPPETEER_NO_SANDBOX: true
 
     - name: Deploy via FTP
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
