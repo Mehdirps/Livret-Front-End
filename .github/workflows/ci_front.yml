@@ -36,7 +36,7 @@ jobs:
         password: ${{ secrets.FTP_PASSWORD }}
         protocol: ftp
         port: 21
-        local-dir: ./build/
+        local-dir: ./
         server-dir: /testfront.fr/
         state-name: .ftp-deploy-sync-state.json
         dangerous-clean-slate: false
