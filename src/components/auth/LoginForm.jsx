@@ -7,14 +7,15 @@
  * distribution ou reproduction non autorisée est strictement interdite
  * sans une autorisation écrite préalable de Mehdi Raposo.
  */
-import React, {useState} from 'react';
-import {useDispatch} from "react-redux";
-import {clearUser, setUser} from "../../stores/slices/userSlice";
+import React, { useState } from 'react';
+import { useDispatch } from "react-redux";
+import { clearUser, setUser } from "../../stores/slices/userSlice";
 import { clearLivret, setLivret } from '../../stores/slices/livretSlice';
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Error from "../Error";
+import { NavLink } from 'react-router-dom';
 
-const LoginForm = ({setOpenLogin}) => {
+const LoginForm = ({ setOpenLogin }) => {
 
     const dispatch = useDispatch();
 
@@ -52,8 +53,8 @@ const LoginForm = ({setOpenLogin}) => {
                     dispatch(clearLivret());
                     return;
                 } else {
-                    dispatch(setUser({user: data.user, token: data.token, first_login: data.first_login}));
-                    dispatch(setLivret({livret: data.livret}));
+                    dispatch(setUser({ user: data.user, token: data.token, first_login: data.first_login }));
+                    dispatch(setLivret({ livret: data.livret }));
 
                     if (data.first_login) {
                         navigate('/premiere_connexion');
@@ -72,8 +73,8 @@ const LoginForm = ({setOpenLogin}) => {
             <h2 className="text-center">Connexion</h2>
             {
                 error ?
-                    <Error error={error}/>    
-                :
+                    <Error error={error} />
+                    :
                     null
             }
             <form className="col-6 mx-auto" onSubmit={(e) => {
@@ -82,20 +83,21 @@ const LoginForm = ({setOpenLogin}) => {
                 <div className="mb-3">
                     <label htmlFor="email" className="form-label">Votre adresse e-mail</label>
                     <input type="email" className="form-control" id="email" onChange={(e) => setEmail(e.target.value)}
-                           required defaultValue={email}/>
+                        required defaultValue={email} />
 
                 </div>
                 <div className="mb-3">
                     <label htmlFor="password" className="form-label">Mot de passe</label>
                     <input type="password" className="form-control" id="password" aria-describedby="passwordHelp"
-                           onChange={(e) => setPassword(e.target.value)} required/>
+                        onChange={(e) => setPassword(e.target.value)} required />
                     <div id="passwordHelp" className="form-text">Écrivez votre mot de passe à l'abri des regards et ne
                         le partagez jamais.
                     </div>
                 </div>
                 <button type="submit" className="btn btn-primary">Me connecter</button>
             </form>
-            <p className="text-center mt-3 text-secondary" style={{cursor: "pointer"}} onClick={() => {
+            <NavLink to="/mot-de-passe-oublie" className="text-decoration-none text-secondary text-center d-block">Mot de passe oublié ?</NavLink>
+            <p className="text-center mt-3 text-secondary" style={{ cursor: "pointer" }} onClick={() => {
                 setOpenLogin(false);
                 sessionStorage.setItem('openLogin', false);
             }}>Pas encore de compte ? Inscrivez-vous</p>

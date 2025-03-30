@@ -28,10 +28,12 @@ import Politique from '../../pages/Politique';
 import CguCgv from '../../pages/CguCgv';
 import Mentions from '../../pages/Mentions';
 import Livrets from '../../pages/Livrets';
+import GenerateResetPasswordToken from '../../pages/GenerateResetPasswordToken';
+import ResetPassword from '../../pages/ResetPassword';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
-  
+
   useEffect(() => {
     window.scrollTo({
       top: 0,
@@ -39,40 +41,43 @@ const ScrollToTop = () => {
       behavior: "auto"
     });
   }, [pathname]);
-  
+
   return null;
 };
 
 const Index = () => {
-    return (
-        <BrowserRouter>
-            <ScrollToTop />
-            <Routes>
-                <Route path={'/livret/:slug/:id'} element={<Livret />} />
-                <Route element={<IndexLayout />}>
-                    <Route path={'/livrets'} element={<Livrets />} />
-                    <Route index element={<Welcome />} />
-                    <Route path={'/connexion'} element={<Authentification />} />
-                    <Route path={'/politique'} element={<Politique />} />
-                    <Route path={'/cgu'} element={<CguCgv />} />
-                    <Route path={'/cgv'} element={<CguCgv />} />
-                    <Route path={'/mentions-legales'} element={<Mentions />} />
-                </Route>
-                <Route path={'premiere_connexion'} element={<FirstLogin />} />
-                <Route path={'/dashboard'} element={<DashboardLayout />}>
-                    <Route index element={<DashboardIndex />} />
-                    <Route path={'profil'} element={<Profile />} />
-                    <Route path={'background'} element={<Background />} />
-                    <Route path={'stats'} element={<Stats />} />
-                    <Route path={'suggestions'} element={<Suggest />} />
-                    <Route path={'inventories'} element={<Inventories />} />
-                    <Route path={'shop'} element={<Shop />} />
-                    <Route path={'orders'} element={<Order />} />
-                    <Route path={'edit_livret'} element={<EditLivret />} />
-                </Route>
-            </Routes>
-        </BrowserRouter>
-    );
+  return (
+    <BrowserRouter>
+      <ScrollToTop />
+      <Routes>
+        <Route path={'/livret/:slug/:id'} element={<Livret />} />
+        <Route element={<IndexLayout />}>
+          <Route path={'/livrets'} element={<Livrets />} />
+          <Route index element={<Welcome />} />
+          <Route path={'/connexion'} element={<Authentification />} />
+          <Route path={'/politique'} element={<Politique />} />
+          <Route path={'/cgu'} element={<CguCgv />} />
+          <Route path={'/cgv'} element={<CguCgv />} />
+          <Route path={'/mentions-legales'} element={<Mentions />} />
+          <Route path={'/mot-de-passe-oublie'} element={<GenerateResetPasswordToken />} />
+          <Route path={'/reset-password'} element={<ResetPassword />} />
+        </Route>
+        <Route path={'premiere_connexion'} element={<FirstLogin />} />
+        <Route path={'/dashboard'} element={<DashboardLayout />}>
+          <Route index element={<DashboardIndex />} />
+          <Route path={'profil'} element={<Profile />} />
+          <Route path={'background'} element={<Background />} />
+          <Route path={'stats'} element={<Stats />} />
+          <Route path={'suggestions'} element={<Suggest />} />
+          <Route path={'inventories'} element={<Inventories />} />
+          <Route path={'shop'} element={<Shop />} />
+          <Route path={'orders'} element={<Order />} />
+          <Route path={'edit_livret'} element={<EditLivret />} />
+        </Route>
+        <Route path="*" element={<div className="container text-center py-5"><h1>404: Page non trouvée</h1><p>La page que vous cherchez n'existe pas.</p></div>} />
+      </Routes>
+    </BrowserRouter>
+  );
 };
 
 export default Index;
