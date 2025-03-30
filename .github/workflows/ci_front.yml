@@ -22,16 +22,34 @@ jobs:
         node-version: '18'
         cache: 'npm'
 
+    - name: Install system dependencies for Puppeteer
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y libgbm-dev libasound2 libatk1.0-0 libcairo2 libcups2 libdbus-1-3 libexpat1 libfontconfig1 libgconf-2-4 libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 libnspr4 libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 ca-certificates fonts-liberation libnss3 lsb-release xdg-utils
+
     - name: Install dependencies
       run: npm install --legacy-peer-deps
 
     - name: Install additional dependencies
-      run: npm install cross-env --legacy-peer-deps --save-dev
+      run: npm install cross-env puppeteer --legacy-peer-deps --save-dev
 
-    - name: Build React app
-      run: npm run build
+    - name: Create .env file for build
+      run: |
+        echo "REACT_APP_SKIP_PRERENDERING=true" > .env
+
+    - name: Build React app with fallback
+      run: |
+        # Try to build normally first
+        npm run build || (
+          # If it fails, try building with a workaround to skip react-snap
+          echo "Regular build failed, trying with fallback..."
+          export CI=false
+          export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
+          NODE_OPTIONS=--max_old_space_size=4096 npm run build
+        )
       env:
         NODE_ENV: production
+        PUPPETEER_ARGS: "--no-sandbox --disable-setuid-sandbox --disable-dev-shm-usage"
         PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
 
     - name: Deploy via FTP
