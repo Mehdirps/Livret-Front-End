@@ -75,7 +75,7 @@ const Background = () => {
             <div className="row">
                 <div className="col-md-4">
                     <p>Fond actuel</p>
-                    {livret.background && (
+                    {livret?.background && (
                         <img src={process.env.REACT_APP_URL + livret.background} alt="Fond actuel"
                             className="img-fluid" />
                     )}
