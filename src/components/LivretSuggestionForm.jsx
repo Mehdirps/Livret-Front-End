@@ -62,16 +62,6 @@ const LivretSuggestionForm = ({ livretId }) => {
 
     return (
         <>
-            <div className="row">
-                <button
-                    type="button"
-                    className="btn btn-primary col-3 mx-auto mb-5"
-                    data-bs-toggle="modal"
-                    data-bs-target="#suggestionModal"
-                >
-                    Envoyer une suggestion
-                </button>
-            </div>
             {
                 open && (
                     <div className="modal fade" id="suggestionModal" tabIndex="-1" aria-labelledby="suggestionModalLabel" aria-hidden="true">
