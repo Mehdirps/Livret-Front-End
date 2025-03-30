@@ -30,15 +30,8 @@ jobs:
 
     - name: Build React app
       run: |
-        # Configure Puppeteer to run without sandbox in CI environment
-        PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
-        NODE_OPTIONS=--max_old_space_size=4096
-        PUPPETEER_EXECUTABLE_PATH=/usr/bin/google-chrome-stable
-        npm run build
-      env:
-        CI: true
-        PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
-        PUPPETEER_NO_SANDBOX: true
+        # Skip react-snap postbuild script in CI environment
+        CI=true SKIP_POSTBUILD=true npm run build
 
     - name: Deploy via FTP
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
