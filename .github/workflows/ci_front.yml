@@ -25,13 +25,8 @@ jobs:
     - name: Install dependencies
       run: npm install --legacy-peer-deps
 
-    - name: Install missing Babel plugin
-      run: npm install --save-dev @babel/plugin-proposal-private-property-in-object --legacy-peer-deps
-
     - name: Build React app
-      run: |
-        # Skip react-snap postbuild script in CI environment
-        CI=true SKIP_POSTBUILD=true npm run build
+      run: npm run build
 
     - name: Deploy via FTP
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
