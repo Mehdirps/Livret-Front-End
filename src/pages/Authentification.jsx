@@ -14,7 +14,7 @@ import {Helmet} from "react-helmet";
 
 const Authentification = () => {
 
-    const [openLogin, setOpenLogin] = useState(sessionStorage.getItem('openLogin') === 'true');
+    const [openLogin, setOpenLogin] = useState(sessionStorage.getItem('openLogin') ? sessionStorage.getItem('openLogin') : true);
 
     return (
         <div className="p-5">
