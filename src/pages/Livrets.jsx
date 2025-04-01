@@ -44,26 +44,36 @@ const Livrets = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {livrets.map(livret => (
-                                <tr key={livret.id}>
-                                    <td>
-                                        {livret.logo && 
-                                            <img 
-                                                src={`${process.env.REACT_APP_URL}${livret.logo}`} 
-                                                alt={livret.title} 
-                                                style={{width:'50px'}} 
-                                            />
-                                        }
-                                    </td>
-                                    <td>{livret.livret_name}</td>
-                                    <td>{livret.description}</td>
-                                    <td>
-                                        <a href={`/livret/${livret.slug}/${livret.id}`} className="btn btn-primary btn-sm">
-                                            Voir le livret
-                                        </a>
-                                    </td>
-                                </tr>
-                            ))}
+                            {
+                                livrets ? (
+                                    livrets.map(livret => (
+                                        <tr key={livret.id}>
+                                            <td>
+                                                {livret.logo &&
+                                                    <img
+                                                        src={`${process.env.REACT_APP_URL}${livret.logo}`}
+                                                        alt={livret.title}
+                                                        style={{ width: '50px' }}
+                                                    />
+                                                }
+                                            </td>
+                                            <td>{livret.livret_name}</td>
+                                            <td>{livret.description}</td>
+                                            <td>
+                                                <a href={`/livret/${livret.slug}/${livret.id}`} className="btn btn-primary btn-sm">
+                                                    Voir le livret
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    ))
+                                ) : (
+                                    <tr>
+                                        <td colSpan="4" className="text-center">
+                                            <p>Aucun livret trouvé.</p>
+                                        </td>
+                                    </tr>
+                                )
+                            }
                         </tbody>
                     </table>
                 </div>

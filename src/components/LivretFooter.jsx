@@ -15,16 +15,18 @@ const LivretFooter = ({ livret }) => {
         <>
             {livret.suggest ? <LivretSuggestionForm livretId={livret.id} /> : null}
             <footer className="container mb-5 livret-footer">
-                <div className="row">
-                    <button
-                        type="button"
-                        className="btn btn-primary col-3 mx-auto mb-5"
-                        data-bs-toggle="modal"
-                        data-bs-target="#suggestionModal"
-                    >
-                        Envoyer une suggestion
-                    </button>
-                </div>
+                {livret.suggest ?
+                    <div className="row">
+                        <button
+                            type="button"
+                            className="btn btn-primary col-3 mx-auto mb-5"
+                            data-bs-toggle="modal"
+                            data-bs-target="#suggestionModal"
+                        >
+                            Envoyer une suggestion
+                        </button>
+                    </div>
+                    : null}
                 <div className="row socials">
                     {livret.establishmentWebsite && (
                         <div className='social-link'>
