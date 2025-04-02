@@ -19,7 +19,6 @@ import PlaceGroups from './modals/PlaceGroups';
 import NearbyPlaces from './modals/NearbyPlaces';
 
 const ModuleCard = ({ module }) => {
-    console.log(module.type.name);
     
     return (
         <>
