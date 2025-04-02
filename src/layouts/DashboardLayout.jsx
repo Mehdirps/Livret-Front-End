@@ -17,6 +17,7 @@ import Success from '../components/Success';
 import { clearLivret, setError, setSuccess } from '../stores/slices/livretSlice';
 import ShareLivret from '../components/dashboard/ShareLivret';
 import { setLivret } from '../stores/slices/livretSlice';
+import { Helmet } from 'react-helmet';
 
 const DashboardLayout = () => {
     const user = useSelector(state => state.user.user);
@@ -91,27 +92,33 @@ const DashboardLayout = () => {
     };
 
     return (
-        <div className="row container" style={{ minHeight: '100vh', maxWidth: '100vw', marginTop: '50px' }}>
-            <button
-                className="btn btn-dark d-md-none"
-                onClick={toggleSidebar}
-                style={{ position: 'fixed', top: 10, left: 10, zIndex: 1060, width: '40px', height: '40px' }}
-            >
-                <i className="bi bi-list"></i>
-            </button>
+        <>
+            <Helmet>
+                <title>Heberginfos - Dashboard</title>
+                <meta name="description" content="Dashboard de Heberginfos" />
+            </Helmet>
+            <div className="row container" style={{ minHeight: '100vh', maxWidth: '100vw', marginTop: '50px' }}>
+                <button
+                    className="btn btn-dark d-md-none"
+                    onClick={toggleSidebar}
+                    style={{ position: 'fixed', top: 10, left: 10, zIndex: 1060, width: '40px', height: '40px' }}
+                >
+                    <i className="bi bi-list"></i>
+                </button>
 
-            <div className={`col-md-3 col-12 ${isSidebarVisible ? 'd-block' : 'd-none'} d-md-block`}>
-                <Sidebar toggleSidebar={toggleSidebar} />
+                <div className={`col-md-3 col-12 ${isSidebarVisible ? 'd-block' : 'd-none'} d-md-block`}>
+                    <Sidebar toggleSidebar={toggleSidebar} />
+                </div>
+                <div className="col-md-9 col-12">
+                    <main>
+                        {error && <Error error={error} />}
+                        {success && <Success success={success} />}
+                        <Outlet />
+                    </main>
+                </div>
+                <ShareLivret />
             </div>
-            <div className="col-md-9 col-12">
-                <main>
-                    {error && <Error error={error} />}
-                    {success && <Success success={success} />}
-                    <Outlet />
-                </main>
-            </div>
-            <ShareLivret />
-        </div>
+        </>
     );
 };
 

@@ -9,10 +9,14 @@
  */
 import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 const IndexLayout = () => {
     return (
         <>
+            <Helmet>
+                <title>Heberginfos</title>
+            </Helmet>
             <nav className="navbar navbar-expand-lg bg-body-tertiary">
                 <div className="container">
                     <NavLink className="navbar-brand" to={'/'}>
