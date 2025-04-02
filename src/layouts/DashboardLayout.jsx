@@ -49,6 +49,13 @@ const DashboardLayout = () => {
                         localStorage.setItem('openLogin', true);
                         navigate('/connexion');
                     } else {
+                        if (data.message_lot_of_request) {
+                            dispatch(setError({ error: data.message_lot_of_request }));
+                            dispatch(clearLivret());
+                            dispatch(clearUser());
+                            return;
+                        }
+
                         dispatch(setUser({ user: data.user, token: token }));
 
                         fetch(`${process.env.REACT_APP_API_URL}dashboard`, {
@@ -84,7 +91,7 @@ const DashboardLayout = () => {
     };
 
     return (
-        <div className="row container" style={{ minHeight: '100vh', maxWidth: '100vw', marginTop: '50px'}}>
+        <div className="row container" style={{ minHeight: '100vh', maxWidth: '100vw', marginTop: '50px' }}>
             <button
                 className="btn btn-dark d-md-none"
                 onClick={toggleSidebar}
