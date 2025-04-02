@@ -28,6 +28,8 @@ const Order = () => {
             .then(data => {
                 if (!data.error) {
                     setOrders(data.orders);
+                }else{
+                    setOrders([]);
                 }
             })
             .catch(error => {

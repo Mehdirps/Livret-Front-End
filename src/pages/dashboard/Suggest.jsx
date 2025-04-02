@@ -41,14 +41,18 @@ const Suggest = () => {
         })
             .then(response => response.json())
             .then(data => {
-                setSuggestions(data.suggestions);
-                setSuggestionsToFiltered(data.suggestions);
-                setSuggestionStats({
-                    accepted: data.suggestions.filter(s => s.status === 'accepted').length,
-                    refused: data.suggestions.filter(s => s.status === 'refused').length,
-                    pending: data.suggestions.filter(s => s.status === 'pending').length,
-                });
-                setRequestSuccess(false);
+                if(data.suggestions){
+                    setSuggestions(data.suggestions);
+                    setSuggestionsToFiltered(data.suggestions);
+                    setSuggestionStats({
+                        accepted: data.suggestions.filter(s => s.status === 'accepted').length,
+                        refused: data.suggestions.filter(s => s.status === 'refused').length,
+                        pending: data.suggestions.filter(s => s.status === 'pending').length,
+                    });
+                    setRequestSuccess(false);
+                }else{
+                    setSuggestions([]);
+                }
             })
             .catch(error => dispatch(setError({ error: error })));
     }, [token,requestSuccess]);

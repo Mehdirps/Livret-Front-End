@@ -34,13 +34,17 @@ const Inventories = () => {
         })
             .then(res => res.json())
             .then(data => {
-                setInventories(data.inventories);
-                setFilteredInventories(data.inventories);
+                if (data.inventories) {
+                    setInventories(data.inventories);
+                    setFilteredInventories(data.inventories);
+                } else {
+                    setInventories([]);
+                }
             })
             .catch(err => dispatch(setError({ error: err })));
     }, [token]);
 
-    if(!inventories) {
+    if (!inventories) {
         return (
             <Loading />
         );
