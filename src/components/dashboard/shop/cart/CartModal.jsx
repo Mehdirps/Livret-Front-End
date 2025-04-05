@@ -11,6 +11,7 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import RemoveProduct from './RemoveProduct';
 import ChangeProductQuantity from './ChangeProductQuantity';
+import { Link } from 'react-router-dom';
 
 
 const CartModal = ({ calculateTotal }) => {
@@ -64,19 +65,19 @@ const CartModal = ({ calculateTotal }) => {
                         )}
                     </div>
                     <div className="modal-footer">
-                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">
-                            Fermer
-                        </button>
                         {
                             cart.length > 0 && (
                                 <>
+                                    <p className="cgu">En cliquant sur "Passer à la caisse", vous acceptez les <Link to="/cgu" target='_blank' className="text-primary">Conditions d'utilisation</Link> et notre <Link to="/politique" target='_blank' className="text-primary">Politique de confidentialité</Link>.</p>
                                     <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#paiementsModal">
                                         Passer à la caisse
                                     </button>
-                                    <p className="cgu">En cliquant sur "Passer à la caisse", vous acceptez les <a href="/cgu" target="_blank">CGU/CGV</a> et la <a href="/mentions-legales" target="_blank">Politique de confidentialité</a>.</p>
                                 </>
                             )
                         }
+                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">
+                            Fermer
+                        </button>
                     </div>
                 </div>
             </div>

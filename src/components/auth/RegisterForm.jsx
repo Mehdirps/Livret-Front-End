@@ -10,6 +10,7 @@
 import React, { useState } from 'react';
 import Error from '../Error';
 import Success from '../Success';
+import { Link, NavLink } from 'react-router-dom';
 
 const RegisterForm = ({ setOpenLogin }) => {
 
@@ -238,6 +239,8 @@ const RegisterForm = ({ setOpenLogin }) => {
                             : null
                     }
                 </div>
+                <p className="text-secondary">En vous inscrivant, vous acceptez nos <Link to="/cgu" target='_blank' className="text-primary">Conditions d'utilisation</Link> et notre <Link to="/politique" target='_blank' className="text-primary">Politique de confidentialité</Link>.</p>
+                <p className="text-secondary">Vous recevrez un e-mail de validation de votre compte. Pensez à vérifier vos spams.</p>
                 <button type="submit" className="btn btn-primary mt-3">M'inscrire</button>
             </form>
             <p className="text-center mt-3 text-secondary" style={{ cursor: "pointer" }} onClick={() => {

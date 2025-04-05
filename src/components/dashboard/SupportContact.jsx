@@ -10,6 +10,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setError, setSuccess } from '../../stores/slices/livretSlice';
+import { Link } from 'react-router-dom';
 
 const SupportContact = () => {
     const [subject, setSubject] = useState('');
@@ -111,7 +112,7 @@ const SupportContact = () => {
 
                                             />
                                             <label className="form-check-label" htmlFor="rgpdCheck">
-                                                J'accepte les conditions RGPD
+                                                En cochant cette case, vous acceptez que vos données soient utilisées pour traiter votre demande. Vous pouvez consulter nos <Link to="/cgu" target='_blank' className="text-primary">Conditions d'utilisation</Link> et notre <Link to="/politique" target='_blank' className="text-primary">Politique de confidentialité</Link> pour plus d'informations.
                                             </label>
                                         </div>
                                         <button type="submit" className="btn btn-primary">Envoyer</button>

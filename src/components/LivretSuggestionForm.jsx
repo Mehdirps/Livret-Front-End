@@ -10,6 +10,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setError, setSuccess } from '../stores/slices/livretSlice';
+import { Link } from 'react-router-dom';
 
 const LivretSuggestionForm = ({ livretId }) => {
     const [name, setName] = useState('');
@@ -134,7 +135,7 @@ const LivretSuggestionForm = ({ livretId }) => {
                                                 onChange={(e) => setRgpd(e.target.checked)}
                                             />
                                             <label className="form-check-label" htmlFor="rgpd">
-                                                J'accepte que mes données soient utilisées pour traiter ma demande
+                                                En cochant cette case, vous acceptez que vos données soient utilisées pour traiter votre demande de suggestion. Vous pouvez consulter nos <Link to="/cgu" target='_blank' className="text-primary">Conditions d'utilisation</Link> et notre <Link to="/politique" target='_blank' className="text-primary">Politique de confidentialité</Link> pour plus d'informations.
                                             </label>
                                         </div>
                                         <input type="hidden" name="livret_id" value={livretId} />
